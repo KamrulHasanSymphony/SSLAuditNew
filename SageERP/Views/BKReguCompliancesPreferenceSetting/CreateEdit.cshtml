@@ -1,0 +1,163 @@
+﻿@model Shampan.Models.BKReguCompliancesPreferenceSettings
+
+@{
+    ViewData["Title"] = "Index";
+}
+@Html.Partial("_Header", new HeaderModel()
+{
+    HeaderName = "BK-Regu Compliances Preference Setting Entry",
+    BreadCrums = new Dictionary<string, string>()
+{
+    {"/BKReguCompliancesPreferenceSetting","Index"},
+    {"","Index"},
+}
+})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+
+<div class="container-fluid">
+
+    <form id="frm_BKReguCompliancesPreferenceSetting">
+        <div class="card card-secondary">
+
+            <div class="card-header">
+                <h3 class="card-title">Create BK-Risk Assess Perference Settingm</h3>
+            </div>
+
+
+            <div class="card-body">
+
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.Operation)
+                @Html.HiddenFor(model => model.Edit)
+
+                <div class="form-group row">
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.Code)
+                        @Html.TextBoxFor(Model => Model.Code, new { @class = "  form-control form-control-sm", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Code)
+
+                    </div>
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.BKAuditOfficeTypeId)
+                        @Html.DropDownListFor(model => model.BKAuditOfficeTypeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKAuditOfficeTypeId })
+                        @Html.ValidationMessageFor(model => model.BKAuditOfficeTypeId)
+
+                    </div>
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.BKAuditOfficeId)
+                        @Html.DropDownListFor(model => model.BKAuditOfficeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKAuditOfficeId })
+                        @Html.ValidationMessageFor(model => model.BKAuditOfficeId)
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.InternationTxnFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.InternationTxnFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "InternationTxnFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.ForexFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.ForexFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "ForexFlag" })
+                            </label>
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Status" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.HighProfileClintsFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.HighProfileClintsFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "HighProfileClintsFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.CorporateChientsFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.CorporateChientsFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "CorporateChientsFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.AmlFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.AmlFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "AmlFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+
+    <div class="card">
+        <div class="card-header p-2">
+
+            @if (Model.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+            {
+                <button type="button" class="button btnsave sslUpdate">Update</button>
+            }
+            else
+            {
+                <button class="button btnsave sslSave" type="button" id="">Save</button>
+            }
+
+        </div>
+    </div>
+
+
+
+</div>
+
+@section scripts {
+
+    <script src="/js/app/Services/CommonService.js"></script>
+    <script src="/js/app/Services/BKReguCompliancesPreferenceSettingService.js"></script>
+    <script src="/js/app/Controllers/BKReguCompliancesPreferenceSettingController.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            BKReguCompliancesPreferenceSettingController.init();
+        });
+
+    </script>
+
+
+}

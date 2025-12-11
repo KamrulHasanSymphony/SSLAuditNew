@@ -1,0 +1,130 @@
+﻿@model Shampan.Models.DeshboardSettings
+
+@{
+	ViewData["Title"] = "Index";
+}
+@Html.Partial("_Header",new HeaderModel(){ HeaderName = "Deshboard Entry", BreadCrums = new Dictionary<string, string>()
+{
+	{ "/Deshboard/DeshboardSettingIndex","DeshboardSettingIndex"},
+    { "","DeshboardSettingIndex"},
+}})
+
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+<div class="container-fluid">
+
+	<form id="frm_DeshboardSetting">
+
+		<div class="card card-secondary">
+
+			<div class="card-header">
+				<h3 class="card-title"> Deshboard Setting </h3>
+			</div>
+
+			<div class="card-body">
+
+				@Html.HiddenFor(model => model.Id)
+				@Html.HiddenFor(model => model.Operation)
+
+				<div class="form-group row">
+					<div class="col-sm-2">
+						<div>
+							@Html.LabelFor(model => model.UserId)
+							@Html.DropDownListFor(model => model.UserId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_readonly = Model.UserId, @data_selected = Model.UserId })
+							@Html.ValidationMessageFor(model => model.UserId)
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group row">
+
+					<div class="col-sm-3">
+						<div class="form-check">
+							<label class="form-check-label">
+								@Html.LabelFor(model => model.IsPieChart, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+								@Html.CheckBoxFor(model => model.IsPieChart, new { @class = "form-check-input", style = "margin-left: 135px;    margin-top: 34px; transform: scale(1.9);", id = "isPieChart" })
+							</label>
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-check">
+							<label class="form-check-label">
+								@Html.LabelFor(model => model.IsFinancialData, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+								@Html.CheckBoxFor(model => model.IsFinancialData, new { @class = "form-check-input", style = "margin-left: 100px;    margin-top: 34px; transform: scale(1.9);", id = "isFinancialData" })
+							</label>
+						</div>
+					</div>
+			
+					<div class="col-sm-2">
+						<div class="form-check">
+							<label class="form-check-label">
+								@Html.LabelFor(model => model.IsPlannedEngagement, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+								@Html.CheckBoxFor(model => model.IsPlannedEngagement, new { @class = "form-check-input", style = "margin-left: 37px;    margin-top: 34px; transform: scale(1.9);", id = "isPlannedEngagement" })
+							</label>
+						</div>
+					</div>
+
+					<div class="col-sm-2">
+						<div class="form-check">
+							<label class="form-check-label">
+								@Html.LabelFor(model => model.IsUnplannedEngagement, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+								@Html.CheckBoxFor(model => model.IsUnplannedEngagement, new { @class = "form-check-input", style = "margin-left: 37px;    margin-top: 34px; transform: scale(1.9);", id = "isUnplannedEngagement" })
+							</label>
+						</div>
+					</div>
+
+					<div class="col-sm-2">
+						<div class="form-check">
+							<label class="form-check-label">
+								@Html.LabelFor(model => model.IsYearData, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+								@Html.CheckBoxFor(model => model.IsYearData, new { @class = "form-check-input", style = "margin-left: 37px;    margin-top: 34px; transform: scale(1.9);", id = "isYearData" })
+							</label>
+						</div>
+					</div>
+
+					<div class="col-sm-2">
+						<div class="form-check">
+							<label class="form-check-label">
+								@Html.LabelFor(model => model.IsBoxData, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+								@Html.CheckBoxFor(model => model.IsBoxData, new { @class = "form-check-input", style = "margin-left: 37px;    margin-top: 34px; transform: scale(1.9);", id = "isBoxData" })
+							</label>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</form>
+
+	<div class="card">
+		<div class="card-header p-2">
+			@if (Model.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+			{
+				<button type="button" class="button btnDeshboardSettingSave sslUpdate">Update</button>
+			}
+			else
+			{
+				<button class="button btnDeshboardSettingSave sslSave" type="button" id="">Save</button>
+			}
+		</div>
+	</div>
+
+</div>
+
+
+@section scripts {
+
+	<script src="/js/app/Services/CommonService.js"></script>
+	<script src="/js/app/Services/DeshboardEntryService.js"></script>
+	<script src="/js/app/Controllers/DeshboardEntryController.js"></script>
+	<script>
+		$(document).ready(function () {
+			DeshboardEntryController.init();
+		});
+	</script>
+
+}

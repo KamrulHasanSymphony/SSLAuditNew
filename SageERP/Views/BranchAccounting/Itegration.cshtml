@@ -1,0 +1,122 @@
+﻿@model Shampan.Models.SalesInvoice
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@* @Html.Partial("_Header",new HeaderModel(){ HeaderName = "Tours", BreadCrums = new Dictionary<string, string>()
+{
+    {"/Tours","Index"},
+    {"","Index"},
+}}) *@
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+
+<div class="container-fluid">
+
+
+    <form id="frm_Integration">
+
+        <div class="card card-secondary">
+
+            <div class="card-header">
+                <h3 class="card-title">Create Tour</h3>
+            </div>
+
+
+            <div class="card-body">
+
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group row">
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FromDate)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.FromDate, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.ToDate)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.ToDate, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+
+
+</div>
+
+<div class="container-fluid">
+
+
+    <div class="card">
+
+
+        <div class="card-header p-2">
+            <button type="button" title="Add New Tour"
+                    @* data-url="/BranchAccounting/SaleIntegration" onclick="GoTo(this)" *@
+                    id="" class="button sslPost NewButton btnSaleSave">
+                Sale Integration
+            </button>
+
+            <button type="button" title="Add New Tour"
+                    data-url="/BranchAccounting/Index" onclick="GoTo(this)"
+                    id="" class="button sslPost NewButton ">
+                Sale Index
+            </button>
+
+
+
+            <button type="button" title=""
+                    id="" class="button sslPost NewButton btnPurchaseSave">
+
+                Purchase Integration
+            </button>
+
+            <button type="button" title="Add New Tour"
+                    data-url="/BranchAccounting/PurchaseIndex" onclick="GoTo(this)"
+                    id="" class="button sslPost NewButton ">
+                Purchase Index
+            </button>
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+@section scripts{
+
+    <script src="/js/app/Services/CommonService.js"></script>
+    <script src="/js/app/Services/ToursService.js"></script>
+    <script src="/js/app/Controllers/ToursController.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            ToursController.init();
+
+        });
+
+    </script>
+    }
+

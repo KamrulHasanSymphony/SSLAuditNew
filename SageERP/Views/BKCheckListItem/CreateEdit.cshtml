@@ -1,0 +1,211 @@
+﻿@model Shampan.Models.CheckListItem
+
+@{
+	ViewData["Title"] = "Index";	
+}
+@Html.Partial("_Header", new HeaderModel()
+{
+	HeaderName = "BK-CheckList Item Entry",
+	BreadCrums = new Dictionary<string, string>()
+{
+	{"/BKCheckListItem","Index"},
+    {"","Index"},
+}})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+<div class="container-fluid">
+
+
+	<div class="card">
+		<div class="card-header p-2">
+
+			<button type="button" title="Add New Audit"
+					data-url="/BKCheckListItem/Create" onclick="GoTo(this)"
+					id="" class="button NewButton addNewButton">
+				New
+			</button>
+		@* 	<button type="button" title=""
+					id="PostAU" class="button sslPost">
+
+				Post
+			</button> *@
+
+		</div>
+	</div>
+
+
+	@* <div class="card">
+
+		<div class="card-header p-2">
+			<h5>Filters</h5>
+		</div>
+		<div class="card-body p-2">
+			<div class="form-group row">
+				&nbsp;   &nbsp;&nbsp;
+
+				<div class="col-sm-2">
+					@Html.LabelFor(model => model.FromDate)
+					<div class="input-group date">
+						@Html.TextBoxFor(model => model.FromDate, new { @class = "  form-control form-control-sm dateRange" })
+						<div class="input-group-append">
+							<div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-2">
+					@Html.LabelFor(model => model.ToDate)
+					<div class="input-group date">
+						@Html.TextBoxFor(model => model.ToDate, new { @class = "  form-control form-control-sm dateRange" })
+						<div class="input-group-append">
+							<div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-1" style="margin-top: 28px;">
+					<button type="button" id="indexSearch" class="buttonn searchButton">
+						Search
+					</button>
+				</div>
+
+				<div class="col-sm-1" style="margin-top: 28px;">
+					<button type="button" id="download" class="buttonn excelButton">
+						&nbsp;
+						Excel
+					</button>
+				</div>
+
+			</div>
+		</div>
+
+	</div> *@
+
+</div>
+
+
+<div class="container-fluid">
+
+	<form id="frm_CheckListItem">
+		<div class="card card-secondary">
+
+			<div class="card-header">
+				<h3 class="card-title">Create Check ListItem</h3>
+			</div>
+
+
+			<div class="card-body">
+
+				@Html.HiddenFor(model => model.Id)
+				@Html.HiddenFor(model => model.Operation)
+				@Html.HiddenFor(model => model.Edit)
+
+				<div class="form-group row">
+
+
+					<div class="col-sm-2">
+						@Html.LabelFor(model => model.Code)
+						@Html.TextBoxFor(Model =>Model.Code , new { @class = "  form-control form-control-sm",@readonly="readonly" })
+						@Html.ValidationMessageFor(model => model.Code)
+
+					</div>
+
+
+					<div class="col-sm-2">
+
+						@Html.LabelFor(model => model.BkCheckListTypesId)
+						@Html.DropDownListFor(model => model.BkCheckListTypesId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BkCheckListTypesId })
+						@Html.ValidationMessageFor(model => model.BkCheckListTypesId)
+
+                    </div>
+
+					<div class="col-sm-2">
+
+						@Html.LabelFor(model => model.BKCheckListSubTypesId)
+						@Html.DropDownListFor(model => model.BKCheckListSubTypesId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKCheckListSubTypesId })
+						@Html.ValidationMessageFor(model => model.BKCheckListSubTypesId)
+
+					</div>
+
+					@* <div class="col-sm-2">
+
+						@Html.LabelFor(model => model.FieldType)
+						@Html.DropDownListFor(model => model.FieldType, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.FieldType })
+						@Html.ValidationMessageFor(model => model.FieldType)
+
+					</div> *@
+
+					<div class="col-sm-2">
+						@Html.LabelFor(model => model.Description)
+						@Html.TextAreaFor(Model => Model.Description, new { @class = "  form-control form-control-sm" })
+						@Html.ValidationMessageFor(model => model.Description)
+
+					</div>
+
+					<div class="col-sm-2">
+						<div class="form-check">
+							<label class="form-check-label">
+								@Html.LabelFor(model => model.IsFieldType, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+								@Html.CheckBoxFor(model => model.IsFieldType, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "IsFieldType" })
+							</label>
+						</div>
+					</div>
+
+					<div class="col-sm-2">
+						<div class="form-check">
+							<label class="form-check-label">
+								@Html.LabelFor(model => model.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+								@Html.CheckBoxFor(model => model.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Status" })
+							</label>
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+	</form>
+
+	<div class="card">
+		<div class="card-header p-2">
+
+			@if (Model.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+			{
+				<button type="button" class="button btnsave sslUpdate">Update</button>
+				
+			}
+			else
+			{
+
+				<button class="button btnsave sslSave" type="button" id="">Save</button>
+		
+			}
+
+		</div>
+	</div>
+		
+	
+
+</div>
+
+@section scripts{
+
+	<script src="/js/app/Services/CommonService.js"></script>
+	<script src="/js/app/Services/CheckListItemService.js"></script>
+	<script src="/js/app/Controllers/CheckListItemController.js"></script>
+
+
+	<script>
+		$(document).ready(function () {
+
+			CheckListItemController.init();
+		
+
+		});
+
+	</script>
+
+
+}

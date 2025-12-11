@@ -1,0 +1,145 @@
+﻿@model Shampan.Models.BKFraudIrregularitiesInternalControlPreferenceCBS
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@* @Html.Partial("_Header",new HeaderModel(){ HeaderName = "Tours", BreadCrums = new Dictionary<string, string>()
+{
+    {"/Tours","Index"},
+    {"","Index"},
+}}) *@
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+
+<div class="container-fluid">
+
+
+    <form id="frm_FraudIrregularitiesInternalControlIntegration">
+
+        <div class="card card-secondary">
+
+            <div class="card-header">
+                <h3 class="card-title">Filter</h3>
+            </div>
+
+
+            <div class="card-body">
+
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group row">
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FromDate)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.FromDate, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.ToDate)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.ToDate, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.BranchID)
+                        @Html.DropDownListFor(model => model.BranchID, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BranchID })
+                        @Html.ValidationMessageFor(model => model.BranchID)
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+
+
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+
+        <div class="card-header p-2">
+            <button type="button" title=""
+                    id="" class="button sslPost NewButton btnFraudIrregularitiesInternalControlIntegration">
+
+                Fraud Irregularities Internal Control Integration
+            </button>
+
+
+            <button type="button" title=""
+                    id="SaveFraud" class="button sslSave">
+
+                Save
+            </button>
+
+        </div>
+    
+    </div>
+
+</div>
+
+
+<div class="card card-secondary">
+    <div class="card-header">
+        <h3 class="card-title">
+            List Of Data
+        </h3>
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-striped" style="width:100%" id="IntegrationFraudIrregularitiesInternalControlCBSList">
+                <thead>
+                    <tr>
+
+                        <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                        <th>Audit Year</th>
+                        <th>Historical Perform Flg</th>
+                        <th>Status</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+
+    <script src="/js/app/Services/CommonService.js"></script>
+    <script src="/js/app/Services/BKFraudIrregularitiesInternalControlPreferenceCBSService.js"></script>
+    <script src="/js/app/Controllers/BKFraudIrregularitiesInternalControlPreferenceCBSController.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            BKFraudIrregularitiesInternalControlPreferenceCBSController.init();
+
+        });
+
+    </script>
+}
+

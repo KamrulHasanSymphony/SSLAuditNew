@@ -1,0 +1,83 @@
+﻿@model Shampan.Models.BKInternalControlWeakPreferenceSettings
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.Partial("_Header", new HeaderModel()
+{
+    HeaderName = "BK-Internal Control Weak Preference Setting",
+    BreadCrums = new Dictionary<string, string>()
+{
+    {"/BKInternalControlWeakPreferenceSetting","Index"},
+    {"","Index"},
+}})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <div class="card">
+
+        <div class="card-header p-2">
+            <button type="button" title="Add New BankEntry"
+                    data-url="/BKInternalControlWeakPreferenceSetting/Create" onclick="GoTo(this)"
+                    id="" class="button NewButton addNewButton">
+                New
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">
+                List Of Data
+            </h3>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped" style="width:100%" id="BKInternalControlWeakPreferenceSettingList">
+                    <thead>
+                        <tr>
+
+                            <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                            <th>Code</th>
+                            <th>Internal Control Flag</th>
+                            <th>Proper Documentation Flag</th>
+                            <th>Proper Reporting Flag</th>
+                            <th>Status</th>
+                                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+@section scripts{
+
+    <script src="/js/app/Services/CommonService.js"></script>
+    <script src="/js/app/Services/BKInternalControlWeakPreferenceSettingService.js"></script>
+    <script src="/js/app/Controllers/BKInternalControlWeakPreferenceSettingController.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            BKInternalControlWeakPreferenceSettingController.init();
+
+        });
+
+    </script>
+    }
+

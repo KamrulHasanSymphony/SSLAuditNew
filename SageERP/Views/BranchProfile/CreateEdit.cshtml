@@ -1,0 +1,2501 @@
+﻿@model Shampan.Models.BranchProfile
+
+@{
+    ViewData["Title"] = "Index";
+    //var message = ViewBag.SuccessMsg;
+}
+@Html.Partial("_Header", new HeaderModel()
+{
+    HeaderName = "Branch Profile Entry",
+    BreadCrums = new Dictionary<string, string>()
+{
+    {"/BranchProfile","Index"},
+    {"","Index"},
+}
+})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+<style>
+
+    #accordion .ui-accordion-content {
+        max-height: 400px; /* Set the max height */
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+
+
+<div class="container-fluid">
+
+
+    <form id="frm_Branch">
+        <div class="card card-secondary">
+            <div class="card-header">
+                <h3 class="card-title">Create Branch Profile </h3>
+            </div>
+            <div class="card-body">
+                @Html.HiddenFor(model => model.BranchID)
+
+                @*@Html.HiddenFor(model => model.RequisitionNo)*@
+                @Html.HiddenFor(model => model.Operation)
+                <div class="form-group row">
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.BranchCode)
+                        @Html.TextBoxFor(Model => Model.BranchCode, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.BranchCode)
+
+                    </div>
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.BranchName)
+                        <div class="input-group ">
+                            @Html.TextBoxFor(model => model.BranchName, new { @class = "  form-control form-control-sm " })
+
+                        </div>
+                        @Html.ValidationMessageFor(model => model.BranchName)
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.BranchLegalName)
+                        @Html.TextAreaFor(model => model.BranchLegalName, new { @class = "  form-control form-control-sm " })
+
+                        @Html.ValidationMessageFor(model => model.BranchLegalName)
+                    </div>
+
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.Address)
+                        @Html.TextAreaFor(model => model.Address, new { @class = "form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Address)
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group row">
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.TelephoneNo)
+                        <div class="input-group ">
+                            @Html.TextBoxFor(model => model.TelephoneNo, new { @class = "  form-control form-control-sm " })
+
+                        </div>
+                        @Html.ValidationMessageFor(model => model.TelephoneNo)
+                    </div>
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.FaxNo)
+                        @Html.TextBoxFor(model => model.FaxNo, new { @class = "  form-control form-control-sm " })
+                        @Html.ValidationMessageFor(model => model.FaxNo)
+
+
+                    </div>
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.Email)
+                        @Html.TextBoxFor(model => model.Email, new { @class = "  form-control form-control-sm " })
+                        @Html.ValidationMessageFor(model => model.Email)
+
+
+                    </div>
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.City)
+                        @Html.TextAreaFor(model => model.City, new { @class = "form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.City)
+
+                    </div>
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.ZipCode)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.ZipCode, new { @class = "  form-control form-control-sm" })
+
+                        </div>
+                        @Html.ValidationMessageFor(model => model.ZipCode)
+
+                    </div>
+
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.ContactPerson)
+                        @Html.TextBoxFor(model => model.ContactPerson, new { @class = "  form-control form-control-sm " })
+                        @Html.ValidationMessageFor(model => model.ContactPerson)
+
+
+                    </div>
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.ContactPersonDesignation)
+                        <div class="input-group ">
+                            @Html.TextBoxFor(model => model.ContactPersonDesignation, new { @class = "  form-control form-control-sm " })
+
+                        </div>
+                        @Html.ValidationMessageFor(model => model.ContactPersonDesignation)
+                    </div>
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.ContactPersonTelephone)
+                        @Html.TextBoxFor(model => model.ContactPersonTelephone, new { @class = "  form-control form-control-sm " })
+                        @Html.ValidationMessageFor(model => model.ContactPersonTelephone)
+
+
+                    </div>
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.ContactPersonEmail)
+                        @Html.TextBoxFor(model => model.ContactPersonEmail, new { @class = "  form-control form-control-sm " })
+
+                        @Html.ValidationMessageFor(model => model.ContactPersonEmail)
+
+                    </div>
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.Comments)
+                        @Html.TextAreaFor(model => model.Comments, new { @class = "  form-control form-control-sm " })
+
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label>
+
+                            ActiveStatus
+                            @Html.CheckBoxFor(model => model.ActiveStatus, new { @class = "form-control form-control-sm", style = "margin-right: 5px;" })
+                        </label>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group row">
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.CogsCode)
+                        <div class="input-group ">
+                            @Html.TextBoxFor(model => model.CogsCode, new { @class = "  form-control form-control-sm " })
+                            <div class="input-group-append"><button class="btn btn-success btn-sm btn-cogscode" type="button"><i class='fa fa-search'></i></button></div>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.CogsCode)
+
+                    </div>
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.CogsCodeDescription)
+                        @Html.TextAreaFor(model => model.CogsCodeDescription, new { @class = "  form-control form-control-sm ", @readonly = "readonly" })
+
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.TaxCode)
+                        <div class="input-group ">
+                            @Html.TextBoxFor(model => model.TaxCode, new { @class = "  form-control form-control-sm " })
+                            <div class="input-group-append"><button class="btn btn-success btn-sm btn-taxcode" type="button"><i class='fa fa-search'></i></button></div>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.TaxCode)
+
+                    </div>
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.TaxCodeDescription)
+
+                        @Html.TextAreaFor(model => model.TaxCodeDescription, new { @class = "  form-control form-control-sm ", @readonly = "readonly" })
+
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.VatCode)
+                        <div class="input-group ">
+                            @Html.TextBoxFor(model => model.VatCode, new { @class = "  form-control form-control-sm " })
+                            <div class="input-group-append"><button class="btn btn-success btn-sm btn-vatcode" type="button"><i class='fa fa-search'></i></button></div>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.VatCode)
+
+                    </div>
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.VatCodeDescription)
+
+                        @Html.TextAreaFor(model => model.VatCodeDescription, new { @class = "  form-control form-control-sm ", @readonly = "readonly" })
+
+
+                    </div>
+
+
+                </div>
+                <div class="form-group row">
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.CompanyCode)
+                        @Html.TextBoxFor(model => model.CompanyCode, new { @class = "  form-control form-control-sm " })
+                        @Html.ValidationMessageFor(model => model.CompanyCode)
+
+
+                    </div>
+                    <div class="col-sm-4">
+
+                        @Html.LabelFor(model => model.CompanyName)
+                        @Html.TextBoxFor(model => model.CompanyName, new { @class = "  form-control form-control-sm " })
+                        @Html.ValidationMessageFor(model => model.CompanyName)
+
+
+                    </div>
+
+                    <div class="col-sm-6">
+
+                        @Html.LabelFor(model => model.CompanyAddress)
+                        @Html.TextAreaFor(model => model.CompanyAddress, new { @class = "  form-control form-control-sm " })
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+
+    <div class="card">
+        <div class="card-header p-2">
+            @if (Model.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+            {
+
+                <button type="button" class="button btnsave sslUpdate">Update</button>
+
+                if (Model.IsArchive)
+                {
+                    <button type="button" class="button sslSave btnActivate">Active</button>
+
+                }
+                else
+                {
+                    <button type="button" class="button btnDelete sslUnPost">DeActive</button>
+                }
+
+            }
+            else
+            {
+                <button class="button btnsave sslSave" type="button" id="">Save</button>
+
+            }
+        </div>
+    </div>
+
+
+
+    @* Add *@
+
+     @if (ViewBag.CompanyCode == "BRAC")
+      {
+
+      <div id="tabs">
+
+        <div class="container-fluid d-flex justify-content-between">
+
+            <div class="tab-container">
+                <ul class="tab-list">
+                    <li class="tab-item">
+                        <a href="#tabs-1" class="tab-link active" data-tab="1">Preference Evaluation</a>
+                    </li>
+                    <li class="tab-item">
+                        <a href="#tabs-2" class="tab-link" data-tab="2" id="btnSalePersonRoute">Offices Preference Info</a>
+                    </li>
+                    <li class="tab-item">
+                        <a href="#tabs-3" class="tab-link" data-tab="3" id="btnSalePersonVisitHistory">  Finance Preference </a>
+                    </li>
+                    <li class="tab-item">
+                        <a href="#tabs-4" class="tab-link" data-tab="3" id="btnSalePersonVisitHistory">  Fraud Irrgularities Preference </a>
+                    </li>
+                    <li class="tab-item">
+                        <a href="#tabs-5" class="tab-link" data-tab="3" id="btnSalePersonVisitHistory">  Internal Control Weak Preference </a>
+                    </li>
+                    <li class="tab-item">
+                        <a href="#tabs-6" class="tab-link" data-tab="3" id="btnSalePersonVisitHistory">  Regularity Compliance Preference </a>
+                    </li>
+                    <li class="tab-item">
+                        <a href="#tabs-7" class="tab-link" data-tab="3" id="btnSalePersonVisitHistory">  Risk Assess Perference </a>
+                    </li>
+                    <li class="tab-item">
+                        <a href="#tabs-8" class="tab-link" data-tab="3" id="btnSalePersonVisitHistory">  Common Selection </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div class="container-fluid">
+            <div class="mt-3">
+
+                <div id="tabs-1">
+
+
+                    <div>
+                        <p>
+
+                            @if (Model.BKAuditPreferenceEvaluation.OperationStatus != "evaluation")
+                            {
+
+                                @* <h3>BK-Audit Preference Evaluation</h3> *@
+
+                                <div class="container-fluid">
+
+                                    <div class="card">
+
+                                        <div class="card-header p-2">
+                                            <button type="button" title="Edit Branch Profile"
+                                                    data-url="/BranchProfile/Edit?id=@Model.BranchID&commonId=0&status=evaluation#tabs-1"
+                                                    onclick="GoTo(this)"
+                                                    class="button NewButton addNewButton">
+                                                New
+                                            </button>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="card card-secondary">
+
+                                        <div class="card-header">
+
+                                            <h3 class="card-title">
+                                                List Of Data
+                                            </h3>
+
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+
+                                                <table class="table table-bordered table-striped" style="width:100%" id="BKAuditPreferenceEvaluationList">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                                                            <th>Code</th>
+                                                            <th>Entry Date</th>
+                                                            <th>Status</th>
+
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+
+                                <div class="container-fluid">
+
+                                    @if (Model.BranchID != 0)
+                                    {
+
+
+                                        @Html.Partial("_Header", new HeaderModel()
+                           {
+                               HeaderName = "BK-Audit Preference Evaluation Entry",
+                               BreadCrums = new Dictionary<string, string>()
+                                {
+                                { $"/BranchProfile/Edit?id={Model.BranchID}#tabs-1", "Index" },
+                                { "", "Index" }
+                                }
+                           })
+
+                                    }
+
+
+                                    <form id="frm_BKAuditPreferenceEvaluation">
+                                        <div class="card card-secondary">
+
+
+
+                                            <div class="card-body">
+
+                                                @Html.HiddenFor(model => model.BKAuditPreferenceEvaluation.Id)
+                                                @Html.HiddenFor(model => model.BKAuditPreferenceEvaluation.Operation)
+                                                @Html.HiddenFor(model => model.BKAuditPreferenceEvaluation.Edit)
+                                                @Html.HiddenFor(model => model.BKAuditPreferenceEvaluation.BranchCode)
+                                                @Html.HiddenFor(model => model.BKAuditPreferenceEvaluation.BranchID)
+
+                                                <div class="form-group row">
+
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromCommonSettingSelectedValuesMin)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromCommonSettingSelectedValuesMin, new { @class = " dFormat   form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromCommonSettingSelectedValuesMin)
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromCommonSettingSelectedValuesMax)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromCommonSettingSelectedValuesMax, new { @class = " dFormat form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromCommonSettingSelectedValuesMax)
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromRiskAssessSelectedValuesMin)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromRiskAssessSelectedValuesMin, new { @class = " dFormat  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromRiskAssessSelectedValuesMin)
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromRiskAssessSelectedValuesMax)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromRiskAssessSelectedValuesMax, new { @class = " dFormat  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromRiskAssessSelectedValuesMax)
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.EntryDate)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKAuditPreferenceEvaluation.EntryDate, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromReguCompliancesSelectedValuesMin)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromReguCompliancesSelectedValuesMin, new { @class = " dFormat form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromReguCompliancesSelectedValuesMin)
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="form-group row">
+
+
+
+
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromReguComliancesSelectedValuesMax)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromReguComliancesSelectedValuesMax, new { @class = " dFormat form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromReguComliancesSelectedValuesMax)
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromFinancePerformSelectedValuesMin)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromFinancePerformSelectedValuesMin, new { @class = "dFormat form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromFinancePerformSelectedValuesMin)
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromFinancePerformSelectedValuesMax)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromFinancePerformSelectedValuesMax, new { @class = "dFormat form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromFinancePerformSelectedValuesMax)
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromFraudIrrgularitiesSelectedValuesMin)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromFraudIrrgularitiesSelectedValuesMin, new { @class = "dFormat form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromFraudIrrgularitiesSelectedValuesMin)
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromFraudIrregularitiesSelectedValuesMax)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromFraudIrregularitiesSelectedValuesMax, new { @class = "dFormat form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromFraudIrregularitiesSelectedValuesMax)
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromInternalControlWeakSelectedValuesMin)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromInternalControlWeakSelectedValuesMin, new { @class = "dFormat form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromInternalControlWeakSelectedValuesMin)
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="form-group row">
+
+
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromInternalControlWeakSelectedValuesMax)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditPreferenceEvaluation.FlagPercentFromInternalControlWeakSelectedValuesMax, new { @class = "dFormat form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditPreferenceEvaluation.FlagPercentFromInternalControlWeakSelectedValuesMax)
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKAuditPreferenceEvaluation.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKAuditPreferenceEvaluation.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Status" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="card">
+                                        <div class="card-header p-2">
+
+                                            @if (Model.BKAuditPreferenceEvaluation.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                <button type="button" class="button btnsaveAuditPreferenceEvaluation sslUpdate">Update</button>
+                                            }
+                                            else
+                                            {
+                                                <button class="button btnsaveAuditPreferenceEvaluation sslSave" type="button" id="">Save</button>
+                                            }
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                            }
+
+                        </p>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="mt-3">
+
+                <div id="tabs-2">
+
+                    @* <h3>BK-Audit Offices Preference Info</h3> *@
+
+                    <div>
+                        <p>
+
+                            @if (Model.BKAuditOfficesPreferenceInfo.OperationStatus != "OfficePreference")
+                            {
+
+                                <div class="card">
+                                    <div class="card-header p-2">
+                                        <button type="button" title="Edit Branch Profile"
+                                                data-url="/BranchProfile/Edit?id=@Model.BranchID&commonId=0&status=OfficePreference#tabs-2"
+                                                onclick="GoTo(this)"
+                                                class="button NewButton addNewButton">
+                                            New
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            List Of Data
+                                        </h3>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+
+                                            <table class="table table-bordered table-striped" style="width:100%" id="BKAuditOfficesPreferenceInfoList">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                                                        <th>Code</th>
+                                                        <th>Historical Perform Flag</th>
+                                                        <th>Audit Perference Value</th>
+                                                        <th>Entry Date</th>
+                                                        <th>Status</th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                            else
+                            {
+
+                                <div class="container-fluid">
+
+                                    @if (Model.BranchID != 0)
+                                    {
+
+                                        @Html.Partial("_Header", new HeaderModel()
+                           {
+                               HeaderName = "BK-Audit Offices Preference Info Entry",
+                               BreadCrums = new Dictionary<string, string>()
+                                {
+                                { $"/BranchProfile/Edit?id={Model.BranchID}#tabs-2", "Index" },
+                                { "", "Index" }
+                                }
+                           })
+
+                                    }
+                                    <form id="frm_BKAuditOfficesPreferenceInfo">
+                                        <div class="card card-secondary">
+
+                                            <div class="card-body">
+
+                                                @Html.HiddenFor(model => model.BKAuditOfficesPreferenceInfo.Id)
+                                                @Html.HiddenFor(model => model.BKAuditOfficesPreferenceInfo.Operation)
+                                                @Html.HiddenFor(model => model.BKAuditOfficesPreferenceInfo.Edit)
+                                                @Html.HiddenFor(model => model.BKAuditOfficesPreferenceInfo.BranchID)
+
+                                                <div class="form-group row">
+
+
+                                                    <div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKAuditOfficesPreferenceInfo.BKAuditOfficeTypeId)
+                                                        @Html.DropDownListFor(model => model.BKAuditOfficesPreferenceInfo.BKAuditOfficeTypeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKAuditOfficesPreferenceInfo.BKAuditOfficeTypeId })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditOfficesPreferenceInfo.BKAuditOfficeTypeId)
+
+                                                    </div>
+
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditOfficesPreferenceInfo.EntryDate)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKAuditOfficesPreferenceInfo.EntryDate, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKAuditOfficesPreferenceInfo.HistoricalPerformFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKAuditOfficesPreferenceInfo.HistoricalPerformFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "HistoricalPerformFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKAuditOfficesPreferenceInfo.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKAuditOfficesPreferenceInfo.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "PreferenceInfoStatus" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditOfficesPreferenceInfo.AuditYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKAuditOfficesPreferenceInfo.AuditYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    @*<div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKAuditOfficesPreferenceInfo.AuditFiscalYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKAuditOfficesPreferenceInfo.AuditFiscalYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>*@
+
+                                                    <div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKAuditOfficesPreferenceInfo.AuditPerferenceValue)
+                                                        @Html.TextBoxFor(Model => Model.BKAuditOfficesPreferenceInfo.AuditPerferenceValue, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKAuditOfficesPreferenceInfo.AuditPerferenceValue)
+
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="form-group row">
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="card">
+                                        <div class="card-header p-2">
+
+
+                                            @if (Model.BKAuditOfficesPreferenceInfo.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+                                            {
+
+                                                <button type="button" class="button btnsaveBKAuditOfficesPreferenceInfo sslUpdate">Update</button>
+                                            }
+                                            else
+                                            {
+
+                                                <button class="button btnsaveBKAuditOfficesPreferenceInfo sslSave" type="button" id="">Save</button>
+                                            }
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            }
+
+
+                        </p>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="mt-3">
+
+                <div id="tabs-3">
+
+
+                    @* <h3>BK-Finance PerFormPreference Setting</h3> *@
+                    <div>
+                        <p>
+
+                            @if (Model.BKFinancePerformPreferenceSetting.OperationStatus != "FinancePerForm")
+                            {
+
+                                <div class="card">
+
+                                    <div class="card-header p-2">
+
+                                        <button type="button" title="Edit Branch Profile"
+                                                data-url="/BranchProfile/Edit?id=@Model.BranchID&commonId=0&status=FinancePerForm#tabs-3"
+                                                onclick="GoTo(this)"
+                                                class="button NewButton addNewButton">
+                                            New
+                                        </button>
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            List Of Data
+                                        </h3>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+
+                                            <table class="table table-bordered table-striped" style="width:100%" id="BKFinancePerformPreferenceSettingList">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                                                        <th>Code</th>
+                                                        <th>HighValue Asset Mange Flag</th>
+                                                        <th>Budget MgtFlag</th>
+                                                        <th>Status</th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                            else
+                            {
+
+                                <div class="container-fluid">
+
+                                    @if (Model.BranchID != 0)
+                                    {
+
+
+                                        @Html.Partial("_Header", new HeaderModel()
+                           {
+                               HeaderName = "BK-Finance PerFormPreference Entry",
+                               BreadCrums = new Dictionary<string, string>()
+                                {
+                                { $"/BranchProfile/Edit?id={Model.BranchID}#tabs-3", "Index" },
+                                { "", "Index" }
+                                }
+                           })
+
+                                    }
+
+                                    <form id="frm_BKFinancePerformPreferenceSetting">
+                                        <div class="card card-secondary">
+
+
+                                            <div class="card-body">
+
+                                                @Html.HiddenFor(model => model.BKFinancePerformPreferenceSetting.Id)
+                                                @Html.HiddenFor(model => model.BKFinancePerformPreferenceSetting.Operation)
+                                                @Html.HiddenFor(model => model.BKFinancePerformPreferenceSetting.Edit)
+                                                @Html.HiddenFor(model => model.BKFinancePerformPreferenceSetting.BranchID)
+
+                                                <div class="form-group row">
+
+
+                                                    <div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.BKAuditOfficeTypeId)
+                                                        @Html.DropDownListFor(model => model.BKFinancePerformPreferenceSetting.BKAuditOfficeTypeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKFinancePerformPreferenceSetting.BKAuditOfficeTypeId })
+                                                        @Html.ValidationMessageFor(model => model.BKFinancePerformPreferenceSetting.BKAuditOfficeTypeId)
+
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.FundAvailableFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFinancePerformPreferenceSetting.FundAvailableFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "FundAvailableFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.MisManagementClinentsFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFinancePerformPreferenceSetting.MisManagementClinentsFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "MisManagementClinentsFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.EfficienctyFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFinancePerformPreferenceSetting.EfficienctyFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "EfficienctyFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.NPLSLargeFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFinancePerformPreferenceSetting.NPLSLargeFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "NPLSLargeFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.LargeTxnManageFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFinancePerformPreferenceSetting.LargeTxnManageFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "LargeTxnManageFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="form-group row">
+
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.HighValueAssetMangeFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFinancePerformPreferenceSetting.HighValueAssetMangeFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "HighValueAssetMangeFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.BudgetMgtFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFinancePerformPreferenceSetting.BudgetMgtFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "BudgetMgtFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFinancePerformPreferenceSetting.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "BKFinanceStatus" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.AuditYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKFinancePerformPreferenceSetting.AuditYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    @*<div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.AuditFiscalYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKFinancePerformPreferenceSetting.AuditFiscalYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div> *@
+
+                                                    @*  <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.InfoReceiveDate)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKFinancePerformPreferenceSetting.InfoReceiveDate, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div> *@
+
+
+                                                </div>
+
+
+                                                <div class="form-group row">
+
+
+                                                    @*<div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKFinancePerformPreferenceSetting.InfoReceiveId)
+                                                        @Html.TextBoxFor(Model => Model.BKFinancePerformPreferenceSetting.InfoReceiveId, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKFinancePerformPreferenceSetting.InfoReceiveId)
+
+                                                    </div>*@
+
+
+                                                    @* <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.InfoReceiveFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.InfoReceiveFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "InfoReceiveFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div> *@
+
+
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="card">
+                                        <div class="card-header p-2">
+
+
+                                            @if (Model.BKFinancePerformPreferenceSetting.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+                                            {
+
+                                                <button type="button" class="button btnsaveBKFinancePerformPreferenceSetting sslUpdate">Update</button>
+                                            }
+                                            else
+                                            {
+
+                                                <button class="button btnsaveBKFinancePerformPreferenceSetting sslSave" type="button" id="">Save</button>
+                                            }
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            }
+
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="mt-3">
+
+                <div id="tabs-4">
+
+                    @* <h3>BK-Fraud Irrgularities Preference Setting</h3> *@
+                    <div>
+                        <p>
+
+                            @if (Model.BKFraudIrrgularitiesPreferenceSetting.OperationStatus != "FraudIrrgularities")
+                            {
+
+                                <div class="card">
+
+                                    <div class="card-header p-2">
+                                        <button type="button" title="Edit Branch Profile"
+                                                data-url="/BranchProfile/Edit?id=@Model.BranchID&commonId=0&status=FraudIrrgularities#tabs-4"
+                                                onclick="GoTo(this)"
+                                                class="button NewButton addNewButton">
+                                            New
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            List Of Data
+                                        </h3>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+
+                                            <table class="table table-bordered table-striped" style="width:100%" id="BKFraudIrrgularitiesPreferenceSettingList">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                                                        <th>Code</th>
+                                                        <th>Previously Fraud Incident Flag</th>
+                                                        <th>Emp MisConduct Flag</th>
+                                                        <th>Status</th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                            else
+                            {
+
+                                <div class="container-fluid">
+
+
+                                    @if (Model.BranchID != 0)
+                                    {
+
+                                        @Html.Partial("_Header", new HeaderModel()
+                           {
+                               HeaderName = "BK-Fraud Irrgularities Preference Entry",
+                               BreadCrums = new Dictionary<string, string>()
+                                {
+                                { $"/BranchProfile/Edit?id={Model.BranchID}#tabs-4", "Index" },
+                                { "", "Index" }
+                                }
+                           })
+
+
+                                    }
+
+                                    <form id="frm_BKFraudIrrgularitiesPreferenceSetting">
+                                        <div class="card card-secondary">
+
+
+
+
+                                            <div class="card-body">
+
+                                                @Html.HiddenFor(model => model.BKFraudIrrgularitiesPreferenceSetting.Id)
+                                                @Html.HiddenFor(model => model.BKFraudIrrgularitiesPreferenceSetting.Operation)
+                                                @Html.HiddenFor(model => model.BKFraudIrrgularitiesPreferenceSetting.Edit)
+                                                @Html.HiddenFor(model => model.BKFraudIrrgularitiesPreferenceSetting.BranchID)
+
+                                                <div class="form-group row">
+
+
+
+                                                    <div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKFraudIrrgularitiesPreferenceSetting.BKAuditOfficeTypeId)
+                                                        @Html.DropDownListFor(model => model.BKFraudIrrgularitiesPreferenceSetting.BKAuditOfficeTypeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKFraudIrrgularitiesPreferenceSetting.BKAuditOfficeTypeId })
+                                                        @Html.ValidationMessageFor(model => model.BKFraudIrrgularitiesPreferenceSetting.BKAuditOfficeTypeId)
+
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFraudIrrgularitiesPreferenceSetting.PreviouslyFraudIncidentFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFraudIrrgularitiesPreferenceSetting.PreviouslyFraudIncidentFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "PreviouslyFraudIncidentFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFraudIrrgularitiesPreferenceSetting.EmpMisConductFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFraudIrrgularitiesPreferenceSetting.EmpMisConductFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "EmpMisConductFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFraudIrrgularitiesPreferenceSetting.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFraudIrrgularitiesPreferenceSetting.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "BKFraudStatus" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKFraudIrrgularitiesPreferenceSetting.AuditYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKFraudIrrgularitiesPreferenceSetting.AuditYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    @*  <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKFraudIrrgularitiesPreferenceSetting.InfoReceiveDate)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKFraudIrrgularitiesPreferenceSetting.InfoReceiveDate, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div> *@
+
+                                                    @* <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKFraudIrrgularitiesPreferenceSetting.InfoReceiveFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKFraudIrrgularitiesPreferenceSetting.InfoReceiveFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "InfoReceiveFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div> *@
+
+
+                                                </div>
+
+                                                <div class="form-group row">
+
+
+
+                                                    @*<div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKFraudIrrgularitiesPreferenceSetting.AuditFiscalYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKFraudIrrgularitiesPreferenceSetting.AuditFiscalYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div> *@
+
+
+
+
+                                                    @*<div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKFraudIrrgularitiesPreferenceSetting.InfoReceiveId)
+                                                        @Html.TextBoxFor(Model => Model.BKFraudIrrgularitiesPreferenceSetting.InfoReceiveId, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKFraudIrrgularitiesPreferenceSetting.InfoReceiveId)
+
+                                                    </div>*@
+
+
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="card">
+                                        <div class="card-header p-2">
+
+
+                                            @if (Model.BKFraudIrrgularitiesPreferenceSetting.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+                                            {
+
+                                                <button type="button" class="button btnsaveBKFraudIrrgularitiesPreferenceSetting sslUpdate">Update</button>
+                                            }
+                                            else
+                                            {
+
+                                                <button class="button btnsaveBKFraudIrrgularitiesPreferenceSetting sslSave" type="button" id="">Save</button>
+                                            }
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            }
+
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="mt-3">
+
+                <div id="tabs-5">
+
+                    @* <h3>BK-Internal Control Weak Preference Setting</h3> *@
+                    <div>
+                        <p>
+                            @if (Model.BKInternalControlWeakPreferenceSetting.OperationStatus != "InternalControl")
+                            {
+                                <div class="card">
+
+                                    <div class="card-header p-2">
+                                        <button type="button" title="Edit Branch Profile"
+                                                data-url="/BranchProfile/Edit?id=@Model.BranchID&commonId=0&status=InternalControl#tabs-5"
+                                                onclick="GoTo(this)"
+                                                class="button NewButton addNewButton">
+                                            New
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            List Of Data
+                                        </h3>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+
+                                            <table class="table table-bordered table-striped" style="width:100%" id="BKInternalControlWeakPreferenceSettingList">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                                                        <th>Code</th>
+                                                        <th>Internal Control Flag</th>
+                                                        <th>Proper Documentation Flag</th>
+                                                        <th>Proper Reporting Flag</th>
+                                                        <th>Status</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                            else
+                            {
+
+                                <div class="container-fluid">
+
+
+                                    @if (Model.BranchID != 0)
+                                    {
+
+
+                                        @Html.Partial("_Header", new HeaderModel()
+                           {
+                               HeaderName = "BK-Internal Control Weak Preference Entry",
+                               BreadCrums = new Dictionary<string, string>()
+                                {
+                                { $"/BranchProfile/Edit?id={Model.BranchID}#tabs-5", "Index" },
+                                { "", "Index" }
+                                }
+                           })
+
+
+                                    }
+                                    <form id="frm_BKInternalControlWeakPreferenceSetting">
+                                        <div class="card card-secondary">
+
+
+                                            <div class="card-body">
+
+                                                @Html.HiddenFor(model => model.BKInternalControlWeakPreferenceSetting.Id)
+                                                @Html.HiddenFor(model => model.BKInternalControlWeakPreferenceSetting.Operation)
+                                                @Html.HiddenFor(model => model.BKInternalControlWeakPreferenceSetting.Edit)
+                                                @Html.HiddenFor(model => model.BKInternalControlWeakPreferenceSetting.BranchID)
+
+                                                <div class="form-group row">
+
+
+
+                                                    <div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKInternalControlWeakPreferenceSetting.BKAuditOfficeTypeId)
+                                                        @Html.DropDownListFor(model => model.BKInternalControlWeakPreferenceSetting.BKAuditOfficeTypeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKInternalControlWeakPreferenceSetting.BKAuditOfficeTypeId })
+                                                        @Html.ValidationMessageFor(model => model.BKInternalControlWeakPreferenceSetting.BKAuditOfficeTypeId)
+
+                                                    </div>
+
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKInternalControlWeakPreferenceSetting.InternalControlFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKInternalControlWeakPreferenceSetting.InternalControlFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "InternalControlFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKInternalControlWeakPreferenceSetting.ProperDocumentationFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKInternalControlWeakPreferenceSetting.ProperDocumentationFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "ProperDocumentationFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKInternalControlWeakPreferenceSetting.ProperReportingFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKInternalControlWeakPreferenceSetting.ProperReportingFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "ProperReportingFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKInternalControlWeakPreferenceSetting.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKInternalControlWeakPreferenceSetting.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "BKInternalControlStatus" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKInternalControlWeakPreferenceSetting.AuditYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKInternalControlWeakPreferenceSetting.AuditYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="form-group row">
+
+
+
+                                                    @*<div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKInternalControlWeakPreferenceSetting.AuditFiscalYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKInternalControlWeakPreferenceSetting.AuditFiscalYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>*@
+
+                                                    @*<div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKInternalControlWeakPreferenceSetting.InfoReceiveDate)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKInternalControlWeakPreferenceSetting.InfoReceiveDate, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>*@
+
+
+                                                    @*<div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKInternalControlWeakPreferenceSetting.InfoReceiveId)
+                                                        @Html.TextBoxFor(Model => Model.BKInternalControlWeakPreferenceSetting.InfoReceiveId, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKInternalControlWeakPreferenceSetting.InfoReceiveId)
+                                                    </div> *@
+
+
+                                                    @*  <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKInternalControlWeakPreferenceSetting.InfoReceiveFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKInternalControlWeakPreferenceSetting.InfoReceiveFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "InfoReceiveFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div> *@
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="card">
+                                        <div class="card-header p-2">
+
+
+                                            @if (Model.BKInternalControlWeakPreferenceSetting.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+                                            {
+
+                                                <button type="button" class="button btnsaveBKInternalControlWeakPreferenceSetting sslUpdate">Update</button>
+                                            }
+                                            else
+                                            {
+
+                                                <button class="button btnsaveBKInternalControlWeakPreferenceSetting sslSave" type="button" id="">Save</button>
+                                            }
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            }
+
+
+                        </p>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="mt-3">
+
+                <div id="tabs-6">
+
+                    @* <h3>BK-ReguCompliances Preference Setting</h3> *@
+                    <div>
+                        <p>
+
+                            @if (Model.BKReguCompliancesPreferenceSetting.OperationStatus != "ReguCompliances")
+                            {
+                                <div class="card">
+
+                                    <div class="card-header p-2">
+                                        <button type="button" title="Edit Branch Profile"
+                                                data-url="/BranchProfile/Edit?id=@Model.BranchID&commonId=0&status=ReguCompliances#tabs-6"
+                                                onclick="GoTo(this)"
+                                                class="button NewButton addNewButton">
+                                            New
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            List Of Data
+                                        </h3>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+
+                                            <table class="table table-bordered table-striped" style="width:100%" id="BKReguCompliancesPreferenceSettingList">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                                                        <th>Code</th>
+                                                        <th>Internation TxnFlag</th>
+                                                        <th>Forex Flag</th>
+                                                        <th>High Profile Clints Flag</th>
+                                                        <th>Corporate Chients Flag</th>
+                                                        <th>Aml Flag</th>
+                                                        <th>Status</th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+
+                                <div class="container-fluid">
+
+
+                                    @if (Model.BranchID != 0)
+                                    {
+
+
+                                        @Html.Partial("_Header", new HeaderModel()
+                           {
+                               HeaderName = "BK-ReguCompliances Preference Entry",
+                               BreadCrums = new Dictionary<string, string>()
+                                {
+                                { $"/BranchProfile/Edit?id={Model.BranchID}#tabs-6", "Index" },
+                                { "", "Index" }
+                                }
+                           })
+
+                                    }
+
+
+                                    <form id="frm_BKReguCompliancesPreferenceSetting">
+                                        <div class="card card-secondary">
+
+
+
+                                            <div class="card-body">
+
+                                                @Html.HiddenFor(model => model.BKReguCompliancesPreferenceSetting.Id)
+                                                @Html.HiddenFor(model => model.BKReguCompliancesPreferenceSetting.Operation)
+                                                @Html.HiddenFor(model => model.BKReguCompliancesPreferenceSetting.Edit)
+                                                @Html.HiddenFor(model => model.BKReguCompliancesPreferenceSetting.BranchID)
+
+                                                <div class="form-group row">
+
+                                                    <div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.BKAuditOfficeTypeId)
+                                                        @Html.DropDownListFor(model => model.BKReguCompliancesPreferenceSetting.BKAuditOfficeTypeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKReguCompliancesPreferenceSetting.BKAuditOfficeTypeId })
+                                                        @Html.ValidationMessageFor(model => model.BKReguCompliancesPreferenceSetting.BKAuditOfficeTypeId)
+
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.InternationTxnFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKReguCompliancesPreferenceSetting.InternationTxnFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "InternationTxnFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.ForexFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKReguCompliancesPreferenceSetting.ForexFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "ForexFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKReguCompliancesPreferenceSetting.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "BKReguComplianceStatusStatus" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.HighProfileClintsFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKReguCompliancesPreferenceSetting.HighProfileClintsFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "HighProfileClintsFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.CorporateChientsFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKReguCompliancesPreferenceSetting.CorporateChientsFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "CorporateChientsFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+
+
+                                                <div class="form-group row">
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.AmlFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKReguCompliancesPreferenceSetting.AmlFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "AmlFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.AuditYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKReguCompliancesPreferenceSetting.AuditYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    @*<div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.AuditFiscalYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKReguCompliancesPreferenceSetting.AuditFiscalYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>*@
+
+                                                    @*  <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.InfoReceiveDate)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKReguCompliancesPreferenceSetting.InfoReceiveDate, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div> *@
+
+
+                                                    @*  <div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.InfoReceiveId)
+                                                        @Html.TextBoxFor(Model => Model.BKReguCompliancesPreferenceSetting.InfoReceiveId, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKReguCompliancesPreferenceSetting.InfoReceiveId)
+
+                                                    </div> *@
+
+
+                                                    @* <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKReguCompliancesPreferenceSetting.InfoReceiveFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKReguCompliancesPreferenceSetting.InfoReceiveFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "InfoReceiveFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div> *@
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="card">
+                                        <div class="card-header p-2">
+
+
+                                            @if (Model.BKReguCompliancesPreferenceSetting.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+                                            {
+
+                                                <button type="button" class="button btnsaveBKReguCompliancesPreferenceSetting sslUpdate">Update</button>
+                                            }
+                                            else
+                                            {
+
+                                                <button class="button btnsaveBKReguCompliancesPreferenceSetting sslSave" type="button" id="">Save</button>
+                                            }
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            }
+
+                        </p>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="mt-3">
+
+                <div id="tabs-7">
+
+
+                    @* <h3>BK-Risk Assess Perference Setting</h3> *@
+
+                    <div>
+                        <p>
+
+                            @if (Model.BKRiskAssessPerferenceSetting.OperationStatus != "RiskAssessPerference")
+                            {
+                                <div class="card">
+
+                                    <div class="card-header p-2">
+                                        <button type="button" title="Edit Branch Profile"
+                                                data-url="/BranchProfile/Edit?id=@Model.BranchID&commonId=0&status=RiskAssessPerference#tabs-7"
+                                                onclick="GoTo(this)"
+                                                class="button NewButton addNewButton">
+                                            New
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            List Of Data
+                                        </h3>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+
+                                            <table class="table table-bordered table-striped" style="width:100%" id="BKRiskAssessPerferenceSettingList">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                                                        <th>Code</th>
+                                                        <th>Amount</th>
+                                                        <th>Entry Date</th>
+                                                        <th>Status</th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            }
+                            else
+                            {
+                                <div class="container-fluid">
+
+                                    @if (Model.BranchID != 0)
+                                    {
+
+
+                                        @Html.Partial("_Header", new HeaderModel()
+                           {
+                               HeaderName = "BK-Risk Assess Perference Setting Entry",
+                               BreadCrums = new Dictionary<string, string>()
+                                {
+                                { $"/BranchProfile/Edit?id={Model.BranchID}#tabs-7", "Index" },
+                                { "", "Index" }
+                                }
+                           })
+
+                                    }
+
+
+
+                                    <form id="frm_BKRiskAssessPerferenceSetting">
+                                        <div class="card card-secondary">
+
+
+
+                                            <div class="card-body">
+
+                                                @Html.HiddenFor(model => model.BKRiskAssessPerferenceSetting.Id)
+                                                @Html.HiddenFor(model => model.BKRiskAssessPerferenceSetting.Operation)
+                                                @Html.HiddenFor(model => model.BKRiskAssessPerferenceSetting.Edit)
+                                                @Html.HiddenFor(model => model.BKRiskAssessPerferenceSetting.BranchID)
+
+                                                <div class="form-group row">
+
+
+                                                    <div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKRiskAssessPerferenceSetting.BKAuditOfficeTypeId)
+                                                        @Html.DropDownListFor(model => model.BKRiskAssessPerferenceSetting.BKAuditOfficeTypeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKRiskAssessPerferenceSetting.BKAuditOfficeTypeId })
+                                                        @Html.ValidationMessageFor(model => model.BKRiskAssessPerferenceSetting.BKAuditOfficeTypeId)
+
+                                                    </div>
+
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKRiskAssessPerferenceSetting.Amount)
+                                                        @Html.TextBoxFor(Model => Model.BKRiskAssessPerferenceSetting.Amount, new { @class = "dFormat  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKRiskAssessPerferenceSetting.Amount)
+
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKRiskAssessPerferenceSetting.EntryDate)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKRiskAssessPerferenceSetting.EntryDate, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKRiskAssessPerferenceSetting.RiskLocFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKRiskAssessPerferenceSetting.RiskLocFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "RiskLocFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKRiskAssessPerferenceSetting.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKRiskAssessPerferenceSetting.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "BKRiskAssessStatus" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKRiskAssessPerferenceSetting.AuditYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKRiskAssessPerferenceSetting.AuditYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="form-group row">
+
+
+
+                                                    @* <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKRiskAssessPerferenceSetting.AuditFiscalYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKRiskAssessPerferenceSetting.AuditFiscalYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div> *@
+
+                                                    @* <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKRiskAssessPerferenceSetting.InfoReceiveDate)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKRiskAssessPerferenceSetting.InfoReceiveDate, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div> *@
+
+
+                                                    @*  <div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKRiskAssessPerferenceSetting.InfoReceiveId)
+                                                        @Html.TextBoxFor(Model => Model.BKRiskAssessPerferenceSetting.InfoReceiveId, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKRiskAssessPerferenceSetting.InfoReceiveId)
+
+                                                    </div> *@
+                                                    @*  <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKRiskAssessPerferenceSetting.InfoReceiveFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKRiskAssessPerferenceSetting.InfoReceiveFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "InfoReceiveFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div> *@
+
+                                                </div>
+
+                                                <div class="form-group row">
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="card">
+                                        <div class="card-header p-2">
+
+
+                                            @if (Model.BKRiskAssessPerferenceSetting.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+                                            {
+
+                                                <button type="button" class="button btnsaveBKRiskAssessPerferenceSetting sslUpdate">Update</button>
+                                            }
+                                            else
+                                            {
+
+                                                <button class="button btnsaveBKRiskAssessPerferenceSetting sslSave" type="button" id="">Save</button>
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="mt-3">
+
+                <div id="tabs-8">
+
+                    @* <h3>BK-Common Selection Setting</h3> *@
+
+                    <div>
+                        <p>
+
+                            @if (Model.BKCommonSelectionSetting.OperationStatus != "CommonSelection")
+                            {
+
+                                <div class="card">
+
+                                    <div class="card-header p-2">
+                                        <button type="button" title="Edit Branch Profile"
+                                                data-url="/BranchProfile/Edit?id=@Model.BranchID&commonId=0&status=CommonSelection#tabs-8"
+                                                onclick="GoTo(this)"
+                                                class="button NewButton addNewButton">
+                                            New
+                                        </button>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            List Of Data
+                                        </h3>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+
+                                            <table class="table table-bordered table-striped" style="width:100%" id="BKCommonSelectionSettingList">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                                                        <th>Code</th>
+                                                        <th>Historical Perform FlagDesc</th>
+                                                        <th>LastYear AuditFinding FlagDesc</th>
+                                                        <th>Tech Cyber Risk FlagDesc</th>
+                                                        <th>Status</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                            else
+                            {
+
+                                <div class="container-fluid">
+
+                                    @if (Model.BranchID != 0)
+                                    {
+
+
+                                        @Html.Partial("_Header", new HeaderModel()
+                           {
+                               HeaderName = "BK-Common Selection Entry",
+                               BreadCrums = new Dictionary<string, string>()
+                                {
+                                { $"/BranchProfile/Edit?id={Model.BranchID}#tabs-8", "Index" },
+                                { "", "Index" }
+                                }
+                           })
+
+                                    }
+
+
+                                    <form id="frm_BKCommonSelectionSetting">
+                                        <div class="card card-secondary">
+
+
+                                            <div class="card-body">
+
+                                                @Html.HiddenFor(model => model.BKCommonSelectionSetting.Id)
+                                                @Html.HiddenFor(model => model.BKCommonSelectionSetting.Operation)
+                                                @Html.HiddenFor(model => model.BKCommonSelectionSetting.Edit)
+                                                @Html.HiddenFor(model => model.BKCommonSelectionSetting.BranchID)
+
+                                                <div class="form-group row">
+
+
+                                                    <div class="col-sm-2">
+
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.BKAuditOfficeTypeId)
+                                                        @Html.DropDownListFor(model => model.BKCommonSelectionSetting.BKAuditOfficeTypeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKCommonSelectionSetting.BKAuditOfficeTypeId })
+                                                        @Html.ValidationMessageFor(model => model.BKCommonSelectionSetting.BKAuditOfficeTypeId)
+
+                                                    </div>
+
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.EntryDate)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKCommonSelectionSetting.EntryDate, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.AuditYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKCommonSelectionSetting.AuditYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "BKCommonStatus" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    @*<div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.AuditFiscalYear)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKCommonSelectionSetting.AuditFiscalYear, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>*@
+
+                                                    @* <div class="col-sm-2">
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.InfoReceiveDate)
+                                                        <div class="input-group date">
+                                                            @Html.TextBoxFor(model => model.BKCommonSelectionSetting.InfoReceiveDate, new { @class = "  form-control form-control-sm dateRange" })
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                                            </div>
+                                                        </div>
+                                                    </div> *@
+
+                                                    @*<div class="col-sm-3">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.InfoReceiveFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.InfoReceiveFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "InfoReceiveFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div> *@
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.OfficeSizeFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.OfficeSizeFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "OfficeSizeFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-2">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.OfficeSignificanceFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.OfficeSignificanceFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "OfficeSignificanceFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="form-group row">
+
+                                                    @* <div class="col-sm-3">
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.InfoReceiveId)
+                                                        @Html.TextBoxFor(Model => Model.BKCommonSelectionSetting.InfoReceiveId, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKCommonSelectionSetting.InfoReceiveId)
+                                                    </div> *@
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.HitoricalPreformFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.HitoricalPreformFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "HitoricalPreformFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-3">
+
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.HistoricalPerformFlagDesc)
+                                                        @Html.TextBoxFor(Model => Model.BKCommonSelectionSetting.HistoricalPerformFlagDesc, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKCommonSelectionSetting.HistoricalPerformFlagDesc)
+
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.LastYearAuditFindingFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.LastYearAuditFindingFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "LastYearAuditFindingFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-3">
+
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.LastYearAuditFindingFlagDesc)
+                                                        @Html.TextBoxFor(Model => Model.BKCommonSelectionSetting.LastYearAuditFindingFlagDesc, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKCommonSelectionSetting.LastYearAuditFindingFlagDesc)
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group row">
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.PreviousYearExceptLastYearAuditFindingFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.PreviousYearExceptLastYearAuditFindingFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "PreviousYearExceptLastYearAuditFindingFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-3">
+
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.PreviousYearExceptLastYearAuditFindingFlagDesc)
+                                                        @Html.TextBoxFor(Model => Model.BKCommonSelectionSetting.PreviousYearExceptLastYearAuditFindingFlagDesc, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKCommonSelectionSetting.PreviousYearExceptLastYearAuditFindingFlagDesc)
+
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.TechCyberRiskFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.TechCyberRiskFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "TechCyberRiskFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-3">
+
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.TechCyberRiskFlagDesc)
+                                                        @Html.TextBoxFor(Model => Model.BKCommonSelectionSetting.TechCyberRiskFlagDesc, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKCommonSelectionSetting.TechCyberRiskFlagDesc)
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="form-group row">
+
+
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.StaffTurnoverFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.StaffTurnoverFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "StaffTurnoverFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-3">
+
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.StaffTurnoverFlagDesc)
+                                                        @Html.TextBoxFor(Model => Model.BKCommonSelectionSetting.StaffTurnoverFlagDesc, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKCommonSelectionSetting.StaffTurnoverFlagDesc)
+
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.StaffTrainingGapsFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.StaffTrainingGapsFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "StaffTrainingGapsFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-3">
+
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.StaffTrainingGapsFlagDesc)
+                                                        @Html.TextBoxFor(Model => Model.BKCommonSelectionSetting.StaffTrainingGapsFlagDesc, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKCommonSelectionSetting.StaffTrainingGapsFlagDesc)
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group row">
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.StrategicInitiativeFlagveFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.StrategicInitiativeFlagveFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "StrategicInitiativeFlagveFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-3">
+
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.StrategicInitiativeFlagDesc)
+                                                        @Html.TextBoxFor(Model => Model.BKCommonSelectionSetting.StrategicInitiativeFlagDesc, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKCommonSelectionSetting.StrategicInitiativeFlagDesc)
+
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                @Html.LabelFor(model => model.BKCommonSelectionSetting.OperationalCompFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                                                @Html.CheckBoxFor(model => model.BKCommonSelectionSetting.OperationalCompFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "OperationalCompFlag" })
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-sm-3">
+
+                                                        @Html.LabelFor(model => model.BKCommonSelectionSetting.OperationalCompFlagDesc)
+                                                        @Html.TextBoxFor(Model => Model.BKCommonSelectionSetting.OperationalCompFlagDesc, new { @class = "  form-control form-control-sm" })
+                                                        @Html.ValidationMessageFor(model => model.BKCommonSelectionSetting.OperationalCompFlagDesc)
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="form-group row">
+                                                </div>
+
+                                                <div class="form-group row">
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="card">
+                                        <div class="card-header p-2">
+
+
+                                            @if (Model.BKCommonSelectionSetting.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+                                            {
+
+                                                <button type="button" class="button btnsaveBKCommonSelectionSetting sslUpdate">Update</button>
+                                            }
+                                            else
+                                            {
+
+                                                <button class="button btnsaveBKCommonSelectionSetting sslSave" type="button" id="">Save</button>
+                                            }
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            }
+
+
+
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+     }
+
+    @* End *@
+
+
+</div>
+
+
+@section scripts {
+
+    <script src="/js/app/Services/CommonService.js"></script>
+
+    <script>
+        $( function() {
+          $( "#accordion" ).accordion();
+        } );
+    </script>
+
+    <script>
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script>
+
+
+
+    <script src="/js/app/Services/BranchProfileService.js"></script>
+    <script src="/js/app/Controllers/BranchProfileController.js"></script>
+
+
+
+
+    <script src="/js/app/Services/BKAuditPreferenceEvaluationService.js"></script>
+    <script src="/js/app/Controllers/BKAuditPreferenceEvaluationController.js"></script>
+
+    <script src="/js/app/Services/BKAuditOfficesPreferenceInfoService.js"></script>
+    <script src="/js/app/Controllers/BKAuditOfficesPreferenceInfoController.js"></script>
+
+    <script src="/js/app/Services/BKFinancePerformPreferenceSettingService.js"></script>
+    <script src="/js/app/Controllers/BKFinancePerformPreferenceSettingController.js"></script>
+
+    <script src="/js/app/Services/BKFraudIrrgularitiesPreferenceSettingService.js"></script>
+    <script src="/js/app/Controllers/BKFraudIrrgularitiesPreferenceSettingController.js"></script>
+
+    <script src="/js/app/Services/BKInternalControlWeakPreferenceSettingService.js"></script>
+    <script src="/js/app/Controllers/BKInternalControlWeakPreferenceSettingController.js"></script>
+
+    <script src="/js/app/Services/BKReguCompliancesPreferenceSettingService.js"></script>
+    <script src="/js/app/Controllers/BKReguCompliancesPreferenceSettingController.js"></script>
+
+    <script src="/js/app/Services/BKRiskAssessPerferenceSettingService.js"></script>
+    <script src="/js/app/Controllers/BKRiskAssessPerferenceSettingController.js"></script>
+
+    <script src="/js/app/Services/BKCommonSelectionSettingService.js"></script>
+    <script src="/js/app/Controllers/BKCommonSelectionSettingController.js"></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            if ('@ViewBag.CompanyCode'.toUpperCase() === 'GDIC') {
+                BranchProfileController.init();
+            }
+            if('@ViewBag.CompanyCode'.toUpperCase() === 'BRAC') {
+            
+                BKAuditPreferenceEvaluationController.init();
+
+                BKAuditOfficesPreferenceInfoController.init();
+
+                BKFinancePerformPreferenceSettingController.init();
+
+                BKFraudIrrgularitiesPreferenceSettingController.init();
+
+                BKInternalControlWeakPreferenceSettingController.init();
+
+                BKReguCompliancesPreferenceSettingController.init();
+
+                BKRiskAssessPerferenceSettingController.init();
+
+                BKCommonSelectionSettingController.init();
+            }
+        });
+
+    </script>
+
+
+}

@@ -1,0 +1,201 @@
+﻿@model Shampan.Models.BKAuditPreferenceEvaluations
+
+@{
+    ViewData["Title"] = "Index";
+}
+@Html.Partial("_Header", new HeaderModel()
+{
+    HeaderName = "BK-Audit Preference Evaluation Entry",
+    BreadCrums = new Dictionary<string, string>()
+{
+    {"/BKAuditPreferenceEvaluation","Index"},
+    {"","Index"},
+}
+})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+
+<div class="container-fluid">
+
+    <form id="frm_BKAuditPreferenceEvaluation">
+        <div class="card card-secondary">
+
+            <div class="card-header">
+                <h3 class="card-title">Create BK-Audit Preference Evaluation</h3>
+            </div>
+
+
+            <div class="card-body">
+
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.Operation)
+                @Html.HiddenFor(model => model.Edit)
+
+                <div class="form-group row">
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.Code)
+                        @Html.TextBoxFor(Model => Model.Code, new { @class = "  form-control form-control-sm", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Code)
+
+                    </div>
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.BKAuditOfficeId)
+                        @Html.DropDownListFor(model => model.BKAuditOfficeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKAuditOfficeId })
+                        @Html.ValidationMessageFor(model => model.BKAuditOfficeId)
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromCommonSettingSelectedValuesMin)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromCommonSettingSelectedValuesMin, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromCommonSettingSelectedValuesMin)
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromCommonSettingSelectedValuesMax)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromCommonSettingSelectedValuesMax, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromCommonSettingSelectedValuesMax)
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromRiskAssessSelectedValuesMin)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromRiskAssessSelectedValuesMin, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromRiskAssessSelectedValuesMin)
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromRiskAssessSelectedValuesMax)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromRiskAssessSelectedValuesMax, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromRiskAssessSelectedValuesMax)
+                    </div>
+                 
+
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.EntryDate)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.EntryDate, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromReguCompliancesSelectedValuesMin)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromReguCompliancesSelectedValuesMin, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromReguCompliancesSelectedValuesMin)
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromReguComliancesSelectedValuesMax)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromReguComliancesSelectedValuesMax, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromReguComliancesSelectedValuesMax)
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromFinancePerformSelectedValuesMin)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromFinancePerformSelectedValuesMin, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromFinancePerformSelectedValuesMin)
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromFinancePerformSelectedValuesMax)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromFinancePerformSelectedValuesMax, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromFinancePerformSelectedValuesMax)
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromFraudIrrgularitiesSelectedValuesMin)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromFraudIrrgularitiesSelectedValuesMin, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromFraudIrrgularitiesSelectedValuesMin)
+                    </div>
+
+                  
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromFraudIrregularitiesSelectedValuesMax)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromFraudIrregularitiesSelectedValuesMax, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromFraudIrregularitiesSelectedValuesMax)
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromInternalControlWeakSelectedValuesMin)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromInternalControlWeakSelectedValuesMin, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromInternalControlWeakSelectedValuesMin)
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.FlagPercentFromInternalControlWeakSelectedValuesMax)
+                        @Html.TextBoxFor(Model => Model.FlagPercentFromInternalControlWeakSelectedValuesMax, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.FlagPercentFromInternalControlWeakSelectedValuesMax)
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Status" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            
+
+
+            </div>
+        </div>
+    </form>
+
+    <div class="card">
+        <div class="card-header p-2">
+
+            @if (Model.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+            {
+                <button type="button" class="button btnsave sslUpdate">Update</button>
+            }
+            else
+            {
+                <button class="button btnsave sslSave" type="button" id="">Save</button>
+            }
+
+        </div>
+    </div>
+
+
+
+</div>
+
+@section scripts {
+
+    <script src="/js/app/Services/CommonService.js"></script>   
+    <script src="/js/app/Services/BKAuditPreferenceEvaluationService.js"></script>
+    <script src="/js/app/Controllers/BKAuditPreferenceEvaluationController.js"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            BKAuditPreferenceEvaluationController.init();
+        });
+
+    </script>
+
+
+}

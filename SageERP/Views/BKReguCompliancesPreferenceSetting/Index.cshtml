@@ -1,0 +1,86 @@
+﻿@model Shampan.Models.BKReguCompliancesPreferenceSettings
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.Partial("_Header", new HeaderModel()
+{
+    HeaderName = "BK-Regu Compliances Preference Setting",
+    BreadCrums = new Dictionary<string, string>()
+{
+    {"/BKRiskAssessPerferenceSetting","Index"},
+    {"","Index"},
+}})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <div class="card">
+
+        <div class="card-header p-2">
+            <button type="button" title="Add New BankEntry"
+                    data-url="/BKReguCompliancesPreferenceSetting/Create" onclick="GoTo(this)"
+                    id="" class="button NewButton addNewButton">
+                New
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">
+                List Of Data
+            </h3>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped" style="width:100%" id="BKReguCompliancesPreferenceSettingList">
+                    <thead>
+                        <tr>
+
+                            <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                            <th>Code</th>
+                            <th>Internation TxnFlag</th>
+                            <th>Forex Flag</th>
+                            <th>High Profile Clints Flag</th>
+                            <th>Corporate Chients Flag</th>
+                            <th>Aml Flag</th>
+                            <th>Status</th>
+                  
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+@section scripts{
+
+    <script src="/js/app/Services/CommonService.js"></script>
+    <script src="/js/app/Services/BKReguCompliancesPreferenceSettingService.js"></script>
+    <script src="/js/app/Controllers/BKReguCompliancesPreferenceSettingController.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            BKReguCompliancesPreferenceSettingController.init();
+
+        });
+
+    </script>
+    }
+

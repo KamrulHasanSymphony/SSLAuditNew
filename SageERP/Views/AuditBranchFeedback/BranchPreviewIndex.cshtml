@@ -1,0 +1,58 @@
+﻿@model Shampan.Models.AuditModule.AuditBranchFeedback
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.Partial("_Header",new HeaderModel(){ HeaderName = "Feedback List With Issue", BreadCrums = new Dictionary<string, string>()
+{
+    //{"/AuditFeedback/index/"+@Model.AuditId,"Audit Feedback"},
+    //{"","Index"},
+
+}})
+
+@Html.HiddenFor(model => model.Id)
+
+<div class="container-fluid">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">
+                List Of Data
+            </h3>
+
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped" id="AuditBranchFeedbackList">
+                <thead>
+                    <tr>
+                        <th class="private">SL</th>
+                        <th>Issue Heading</th>
+                        <th>Issue Details</th>
+                        <th>Responder Person</th>
+                        <th>Department/Auditor Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts{
+
+    <script src="/js/app/Services/AuditFeedback/AuditFeedbackService.js"></script>
+    <script src="/js/app/Controllers/AuditFeedback/AuditFeedbackController.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            AuditFeedbackController.init(1);
+
+        });
+
+    </script>
+}

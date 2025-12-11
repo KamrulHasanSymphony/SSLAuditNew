@@ -1,0 +1,84 @@
+﻿var ToursService = function () {
+    var save = function (masterObj, done, fail) {
+
+        $.ajax({
+            url: '/Tours/CreateEdit',
+            method: 'post',
+            data: masterObj
+
+        })
+            .done(done)
+            .fail(fail);
+
+    };
+
+
+    var SaleSave = function (masterObj, done, fail) {
+
+        $.ajax({
+            url: '/BranchAccounting/SaleIntegration',
+            method: 'post',
+            data: masterObj
+
+        })
+            .done(done)
+            .fail(fail);
+
+    };
+
+    var PurchaseSave = function (masterObj, done, fail) {
+
+        $.ajax({
+            url: '/BranchAccounting/PurchaseIntegration',
+            method: 'post',
+            data: masterObj
+
+        })
+            .done(done)
+            .fail(fail);
+
+    };
+
+
+
+    var ToursMultiplePost = function (masterObj, done, fail) {
+
+        $.ajax({
+            url: '/Tours/MultiplePost',
+            method: 'post',
+            data: masterObj
+
+        })
+            .done(done)
+            .fail(fail);
+
+
+    };
+   
+    var ToursMultipleUnPost = function (masterObj, done, fail) {
+
+        $.ajax({
+            url: '/Tours/MultipleUnPost',
+            method: 'post',
+            data: masterObj
+
+        })
+            .done(done)
+            .fail(fail);
+
+
+    };
+
+
+
+
+
+    return {
+        save: save,
+        ToursMultipleUnPost: ToursMultipleUnPost,
+        ToursMultiplePost: ToursMultiplePost,
+        SaleSave: SaleSave,
+        PurchaseSave: PurchaseSave
+    
+    }
+}();

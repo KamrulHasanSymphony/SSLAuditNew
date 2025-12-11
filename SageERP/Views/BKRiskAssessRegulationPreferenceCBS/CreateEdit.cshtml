@@ -1,0 +1,194 @@
+﻿@model Shampan.Models.BKRiskAssessRegulationPreferenceCBS
+
+@{
+    ViewData["Title"] = "Index";
+}
+@Html.Partial("_Header", new HeaderModel()
+{
+    HeaderName = "BK-Risk AssessRegulationPreferenceCBS Entry",
+    BreadCrums = new Dictionary<string, string>()
+{
+    {"/BKRiskAssessRegulationPreferenceCBS","Index"},
+    {"","Index"},
+}
+})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+
+<div class="container-fluid">
+
+    <form id="frm_BKRiskAssessRegulationPreferenceCBS">
+        <div class="card card-secondary">
+
+            <div class="card-header">
+                <h3 class="card-title">Create BKRiskAssessRegulationPreferenceCBS</h3>
+            </div>
+
+
+            <div class="card-body">
+
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.Operation)
+                @Html.HiddenFor(model => model.Edit)
+
+                <div class="form-group row">
+
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.BranchID)
+                        @Html.DropDownListFor(model => model.BranchID, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BranchID })
+                        @Html.ValidationMessageFor(model => model.BranchID)
+
+                    </div>
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.RiskTxnAmount)
+                        @Html.TextBoxFor(Model => Model.RiskTxnAmount, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.RiskTxnAmount)
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.AuditYear)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.AuditYear, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.AuditFiscalYear)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.AuditFiscalYear, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.CompFinProductsFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.CompFinProductsFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "CompFinProductsFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.GeoLocRiskFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.GeoLocRiskFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "GeoLocRiskFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                 
+
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.ForexFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.ForexFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "ForexFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.HighProfileClientsFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.HighProfileClientsFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "HighProfileClientsFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.CorporateClientsFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.CorporateClientsFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "CorporateClientsFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.InternationTxnFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.InternationTxnFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "InternationTxnFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Status" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="form-group row">
+
+                  
+
+                </div>
+
+                
+
+
+            </div>
+        </div>
+    </form>
+
+    <div class="card">
+        <div class="card-header p-2">
+
+            @if (Model.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+            {
+                <button type="button" class="button btnsave sslUpdate">Update</button>
+            }
+            else
+            {
+                <button class="button btnsave sslSave" type="button" id="">Save</button>
+            }
+
+        </div>
+    </div>
+
+
+
+</div>
+
+@section scripts {
+
+    <script src="/js/app/Services/CommonService.js"></script>
+    <script src="/js/app/Services/BKRiskAssessRegulationPreferenceCBSService.js"></script>
+    <script src="/js/app/Controllers/BKRiskAssessRegulationPreferenceCBSController.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            BKRiskAssessRegulationPreferenceCBSController.init();
+        });
+
+    </script>
+
+
+}

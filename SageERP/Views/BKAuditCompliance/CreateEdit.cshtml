@@ -1,0 +1,148 @@
+﻿@model Shampan.Models.BKAuditCompliance
+
+@{
+    ViewData["Title"] = "Index";
+}
+@Html.Partial("_Header", new HeaderModel()
+{
+    HeaderName = "BK-Audit Compliance Entry",
+    BreadCrums = new Dictionary<string, string>()
+{
+    {"/BKAuditCompliance","Index"},
+    {"","Index"},
+}
+})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+
+<div class="container-fluid">
+
+    <form id="frm_BKAuditCompliance">
+        <div class="card card-secondary">
+
+            <div class="card-header">
+                <h3 class="card-title">Create Check ListItem</h3>
+            </div>
+
+
+            <div class="card-body">
+
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.Operation)
+                @Html.HiddenFor(model => model.Edit)
+
+                <div class="form-group row">
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.Code)
+                        @Html.TextBoxFor(Model => Model.Code, new { @class = "  form-control form-control-sm", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Code)
+
+                    </div>
+
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.BKAuidtCategoryId)
+                        @Html.DropDownListFor(model => model.BKAuidtCategoryId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKAuidtCategoryId })
+                        @Html.ValidationMessageFor(model => model.BKAuidtCategoryId)
+
+                    </div>
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.BKAuditOfficeTypesId)
+                        @Html.DropDownListFor(model => model.BKAuditOfficeTypesId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKAuditOfficeTypesId })
+                        @Html.ValidationMessageFor(model => model.BKAuditOfficeTypesId)
+
+                    </div>
+
+                    
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.Severity)
+                        @Html.DropDownListFor(model => model.Severity, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.Severity })
+                        @Html.ValidationMessageFor(model => model.Severity)
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.Date)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.Date, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @* <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.Severity)
+                        @Html.TextAreaFor(Model => Model.Severity, new { @class = "form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Severity)
+
+                    </div> *@
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.Description)
+                        @Html.TextAreaFor(Model => Model.Description, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Description)
+
+                    </div>
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+    <div class="card">
+        <div class="card-header p-2">
+
+            @if (Model.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+            {
+                <button type="button" class="button btnsave sslUpdate">Update</button>
+
+            }
+            else
+            {
+
+                <button class="button btnsave sslSave" type="button" id="">Save</button>
+
+            }
+
+        </div>
+    </div>
+
+
+
+</div>
+
+@section scripts {
+
+    <script src="/js/app/Services/CommonService.js"></script>
+    <script src="/js/app/Services/BKAuditComplianceService.js"></script>
+    <script src="/js/app/Controllers/BKAuditComplianceController.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            BKAuditComplianceController.init();
+
+
+        });
+
+    </script>
+
+
+}

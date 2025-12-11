@@ -1,0 +1,722 @@
+﻿@model Shampan.Models.BKCommonSelectionSettings
+
+@{
+    ViewData["Title"] = "Index";
+}
+@Html.Partial("_Header", new HeaderModel()
+{
+    HeaderName = "BK-Common Selection Setting Entry",
+    BreadCrums = new Dictionary<string, string>()
+{
+    {"/BKCommonSelectionSetting","Index"},
+    {"","Index"},
+}
+})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+
+<div class="container-fluid">
+
+    <form id="frm_BKCommonSelectionSetting">
+        <div class="card card-secondary">
+
+            <div class="card-header">
+                <h3 class="card-title">Create BK-Common Selection Setting</h3>
+            </div>
+
+
+            <div class="card-body">
+
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.Operation)
+                @Html.HiddenFor(model => model.Edit)
+
+                <div class="form-group row">
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.Code)
+                        @Html.TextBoxFor(Model => Model.Code, new { @class = "  form-control form-control-sm", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Code)
+
+                    </div>
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.BKAuditOfficeTypeId)
+                        @Html.DropDownListFor(model => model.BKAuditOfficeTypeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKAuditOfficeTypeId })
+                        @Html.ValidationMessageFor(model => model.BKAuditOfficeTypeId)
+
+                    </div>
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.BKAuditOfficeId)
+                        @Html.DropDownListFor(model => model.BKAuditOfficeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BKAuditOfficeId })
+                        @Html.ValidationMessageFor(model => model.BKAuditOfficeId)
+
+                    </div>
+
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.EntryDate)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.EntryDate, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Status" })
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.HitoricalPreformFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.HitoricalPreformFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "HitoricalPreformFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.HistoricalPerformFlagDesc)
+                        @Html.TextBoxFor(Model => Model.HistoricalPerformFlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.HistoricalPerformFlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.LastYearAuditFindingFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.LastYearAuditFindingFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "LastYearAuditFindingFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.LastYearAuditFindingFlagDesc)
+                        @Html.TextBoxFor(Model => Model.LastYearAuditFindingFlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.LastYearAuditFindingFlagDesc)
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.PreviousYearExceptLastYearAuditFindingFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.PreviousYearExceptLastYearAuditFindingFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "PreviousYearExceptLastYearAuditFindingFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.PreviousYearExceptLastYearAuditFindingFlagDesc)
+                        @Html.TextBoxFor(Model => Model.PreviousYearExceptLastYearAuditFindingFlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.PreviousYearExceptLastYearAuditFindingFlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.TechCyberRiskFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.TechCyberRiskFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "TechCyberRiskFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.TechCyberRiskFlagDesc)
+                        @Html.TextBoxFor(Model => Model.TechCyberRiskFlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.TechCyberRiskFlagDesc)
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group row">
+
+
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.StaffTurnoverFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.StaffTurnoverFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "StaffTurnoverFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.StaffTurnoverFlagDesc)
+                        @Html.TextBoxFor(Model => Model.StaffTurnoverFlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.StaffTurnoverFlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.StaffTrainingGapsFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.StaffTrainingGapsFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "StaffTrainingGapsFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.StaffTrainingGapsFlagDesc)
+                        @Html.TextBoxFor(Model => Model.StaffTrainingGapsFlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.StaffTrainingGapsFlagDesc)
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.StrategicInitiativeFlagveFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.StrategicInitiativeFlagveFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "StrategicInitiativeFlagveFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.StrategicInitiativeFlagDesc)
+                        @Html.TextBoxFor(Model => Model.StrategicInitiativeFlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.StrategicInitiativeFlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.OperationalCompFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.OperationalCompFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "OperationalCompFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.OperationalCompFlagDesc)
+                        @Html.TextBoxFor(Model => Model.OperationalCompFlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.OperationalCompFlagDesc)
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields1Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields1Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields1Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields1FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields1FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields1FlagDesc)
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields2Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields2Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields2Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields2FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields2FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields2FlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields3Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields3Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields3Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields3FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields3FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields3FlagDesc)
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields4Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields4Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields4Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields4FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields4FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields4FlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields5Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields5Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields5Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields5FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields5FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields5FlagDesc)
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields6Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields6Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields6Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields6FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields6FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields6FlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields7Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields7Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields7Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields7FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields7FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields7FlagDesc)
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields8Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields8Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields8Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields8FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields8FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields8FlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields9Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields9Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields9Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields9FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields9FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields9FlagDesc)
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields10Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields10Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields10Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields10FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields10FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields10FlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields11Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields11Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields11Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields11FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields11FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields11FlagDesc)
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields12Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields12Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields12Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields12FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields12FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields12FlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields13Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields13Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields13Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields13FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields13FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields13FlagDesc)
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields14Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields14Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields14Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields14FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields14FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields14FlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields15Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields15Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields15Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields15FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields15FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields15FlagDesc)
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields16Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields16Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields16Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields16FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields16FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields16FlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields17Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields17Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields17Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields17FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields17FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields17FlagDesc)
+
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields18Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields18Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields18Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields18FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields18FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields18FlagDesc)
+
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields19Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields19Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields19Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields19FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields19FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields19FlagDesc)
+
+                    </div>
+
+                </div>
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Fields20Flag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Fields20Flag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Fields20Flag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+                        @Html.LabelFor(model => model.Fields20FlagDesc)
+                        @Html.TextBoxFor(Model => Model.Fields20FlagDesc, new { @class = "  form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.Fields20FlagDesc)
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.OfficeSizeFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.OfficeSizeFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "OfficeSizeFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.OfficeSignificanceFlag, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.OfficeSignificanceFlag, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "OfficeSignificanceFlag" })
+                            </label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </form>
+
+    <div class="card">
+        <div class="card-header p-2">
+
+            @if (Model.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+            {
+                <button type="button" class="button btnsave sslUpdate">Update</button>
+            }
+            else
+            {
+                <button class="button btnsave sslSave" type="button" id="">Save</button>
+            }
+
+        </div>
+    </div>
+
+
+
+</div>
+
+@section scripts {
+
+    <script src="/js/app/Services/CommonService.js"></script>
+    <script src="/js/app/Services/BKCommonSelectionSettingService.js"></script>
+    <script src="/js/app/Controllers/BKCommonSelectionSettingController.js"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            BKCommonSelectionSettingController.init();
+        });
+
+    </script>
+
+
+}

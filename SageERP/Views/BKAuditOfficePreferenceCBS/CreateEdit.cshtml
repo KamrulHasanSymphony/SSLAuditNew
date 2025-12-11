@@ -1,0 +1,227 @@
+﻿@model Shampan.Models.BKAuditOfficePreferenceCBS
+
+@{
+    ViewData["Title"] = "Index";
+}
+@Html.Partial("_Header", new HeaderModel()
+{
+    HeaderName = "BK-Audit Office Preference CBS Entry",
+    BreadCrums = new Dictionary<string, string>()
+{
+    {"/BKAuditOfficePreferenceCBS","Index"},
+    {"","Index"},
+}
+})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+
+<div class="container-fluid">
+
+    <form id="frm_BKAuditOfficePreferenceCBS">
+        <div class="card card-secondary">
+
+            <div class="card-header">
+                <h3 class="card-title">Create BK-Audit Office Preference CBS</h3>
+            </div>
+
+
+            <div class="card-body">
+
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.Operation)
+                @Html.HiddenFor(model => model.Edit)
+
+                <div class="form-group row">
+
+
+                    <div class="col-sm-2">
+
+                        @Html.LabelFor(model => model.BranchID)
+                        @Html.DropDownListFor(model => model.BranchID, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.BranchID })
+                        @Html.ValidationMessageFor(model => model.BranchID)
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.AuditYear)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.AuditYear, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.AuditFiscalYear)
+                        @Html.TextBoxFor(model => model.AuditFiscalYear, new { @class = "  form-control input-sm form-control-sm " })
+                        @Html.ValidationMessageFor(model => model.AuditFiscalYear)
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.EntryDate)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.EntryDate, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        @Html.LabelFor(model => model.UpdateDate)
+                        <div class="input-group date">
+                            @Html.TextBoxFor(model => model.UpdateDate, new { @class = "  form-control form-control-sm dateRange" })
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                                 
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.HistoricalPerformFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.HistoricalPerformFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "HistoricalPerformFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                   
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.TechCyberRiskFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.TechCyberRiskFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "TechCyberRiskFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.OfficeSizeFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.OfficeSizeFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "OfficeSizeFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.OfficeSignificanceFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.OfficeSignificanceFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "OfficeSignificanceFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.StaffTurnoverFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.StaffTurnoverFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "StaffTurnoverFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.StaffTrainingGapsFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.StaffTrainingGapsFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "StaffTrainingGapsFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.StrategicInitiativeFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.StrategicInitiativeFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "StrategicInitiativeFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    
+
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.Status, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.Status, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "Status" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.LastYearAuditFindingsFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.LastYearAuditFindingsFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "LastYearAuditFindingsFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                @Html.LabelFor(model => model.PreviousYearsExceptLastYearAuditFindingsFlg, new { @class = "form-check-label", style = "margin-top: 30px;font-weight: bold;" })
+                                @Html.CheckBoxFor(model => model.PreviousYearsExceptLastYearAuditFindingsFlg, new { @class = "form-check-input", style = "margin-left: 35px;    margin-top: 34px; transform: scale(1.9);", id = "PreviousYearsExceptLastYearAuditFindingsFlg" })
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                
+
+
+            </div>
+        </div>
+    </form>
+
+    <div class="card">
+        <div class="card-header p-2">
+
+            @if (Model.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+            {
+                <button type="button" class="button btnsave sslUpdate">Update</button>
+            }
+            else
+            {
+                <button class="button btnsave sslSave" type="button" id="">Save</button>
+            }
+
+        </div>
+    </div>
+
+
+
+</div>
+
+@section scripts {
+
+    <script src="/js/app/Services/CommonService.js"></script>
+    <script src="/js/app/Services/BKAuditOfficePreferenceCBSService.js"></script>
+    <script src="/js/app/Controllers/BKAuditOfficePreferenceCBSController.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            BKAuditOfficePreferenceCBSController.init();
+        });
+
+    </script>
+
+
+}

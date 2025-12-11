@@ -1,0 +1,79 @@
+﻿@model Shampan.Models.AuditModule.AuditAreas
+
+<div class="modal-dialog draggable modal-lg" role="document" style="max-width:70%;">
+
+    <div class="modal-content" style="width:100%;">
+
+        <div class="modal-header">
+            <h4 class="modal-title">Audit Marks</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+
+        <div class="modal-body">
+
+            <form id="AuditAreas">
+
+                @Html.HiddenFor(model => model.Id, new {@Id = "AreaId"})
+                @Html.HiddenFor(model => model.AuditId)
+                @Html.HiddenFor(model => model.MaximumMark)
+                @Html.HiddenFor(model => model.P_Mark)
+                @Html.HiddenFor(model => model.Operation, new {@Id = "AreaOperation"})
+
+                <div class="row form-group">
+
+                    <div class="col-sm-3">
+                        @Html.Label("Audit Type")
+                        @Html.TextBoxFor(model => model.AuditType, new { @class = "  form-control input-sm", @readonly = "readonly" })
+                    </div>
+
+                    <div class="col-sm-3">
+                        @Html.Label("Weight Persent")
+                        @Html.TextBoxFor(model => model.WeightPersent, new { @class = "  form-control input-sm", @readonly = "readonly" })
+                    </div>
+
+                    <div class="col-sm-3">
+                        @Html.Label("Level")
+                        @Html.TextBoxFor(model => model.P_Level, new { @class = "  form-control input-sm", @readonly = "readonly" })
+                    </div>
+               
+                     <div class="col-sm-2">
+                        @Html.Label("Mark")
+                        <div id="dropdownContainer"></div>
+                    </div>
+                    
+                </div>
+
+            </form>
+
+            @if (Model.Edit.Equals("audit", StringComparison.CurrentCultureIgnoreCase))
+            {
+                @if (Model.Operation.Equals("update", StringComparison.OrdinalIgnoreCase))
+                {
+                    <button type="button" class="button sslUpdate AuditAreasbtnMainSave pt-1 btnSaveArea">Update &nbsp;</button>
+                }
+                else
+                {
+                    <button type="button" class="button sslSave AuditAreasbtnMainSave pt-1 btnSaveArea">Save &nbsp;</button>
+                }
+            }
+
+            @if (Model.Edit.Equals("audit", StringComparison.CurrentCultureIgnoreCase))
+            {
+                <div class="row mt-1">
+                    <div class="col-2">
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button type="button" class="button sslClose" data-dismiss="modal">
+                <i class="fas fa-times-circle"></i> Close
+            </button>
+
+        </div>
+
+    </div>
+</div>

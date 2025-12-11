@@ -1,0 +1,34 @@
+﻿<style>
+
+     #chart {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: auto;
+            height: 1000px;
+        }
+
+        .google-visualization-orgchart-table {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: flex-start;
+        }
+
+</style>
+
+
+<div id="scroll-container">
+    <div id="chart"></div>
+</div>
+
+
+@section scripts {
+    <script src="/js/app/Controllers/OragnogramController.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            OragnogramController.init();
+
+        });
+    </script>
+}

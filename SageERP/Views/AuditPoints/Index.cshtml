@@ -1,0 +1,138 @@
+﻿@model Shampan.Models.AuditPoint
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.Partial("_Header", new HeaderModel()
+{
+    HeaderName = "Audit Point",
+    BreadCrums = new Dictionary<string, string>()
+{
+    {"/AuditPoints","Index"},
+    {"","Index"},
+}})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <div class="card">
+
+        <div class="card-header p-2">
+
+            <button type="button" title="Add New BankEntry"
+                    data-url="/AuditPoints/Create" onclick="GoTo(this)"
+                    id="" class="button NewButton addNewButton">
+                New
+            </button>
+
+
+            @* <button type="button" title="Add Email Details" id="addAuditPoint" class="button NewButton addNewButton mb-2">Add Audit Point</button> *@
+
+
+        </div>
+
+
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-header p-2">
+            <h5>Filters</h5>
+        </div>
+        <div class="card-body p-2">
+            <div class="form-group row">
+                &nbsp;   &nbsp;&nbsp;
+
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.PId)
+                    @Html.DropDownListFor(model => model.PId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control form-control-sm", @data_selected = Model.PId })
+                    @Html.ValidationMessageFor(model => model.PId)
+                </div>
+
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.P_Level)
+                    @Html.TextBoxFor(Model => Model.P_Level, new { @class = "  form-control form-control-sm" })
+                    @Html.ValidationMessageFor(model => model.P_Level)
+                </div>
+
+                <div class="col-sm-1" style="margin-top: 28px;">
+                    <button type="button" id="indexSearch" class="buttonn searchButton">
+                        Search
+                    </button>
+                </div>
+
+                
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">
+                List Of Data
+            </h3>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped" style="width:100%" id="AuditPointList">
+                    <thead>
+                        <tr>
+
+                            <th class="action"><input type="checkbox" class="chkAll" />&nbsp;Action</th>
+                            <th>AuditType</th>
+                            <th>Weight Persent</th>
+                            <th>Level</th>
+                                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+@* <div id="AuditUser" class="modal fade"></div> *@
+@* <div id="auditPointModal" class="modal fade"></div> *@
+
+
+
+@section scripts{
+
+    <script src="/js/app/Services/CommonService.js"></script>
+
+
+
+@*  <script src="/js/app/Services/AuditFeedBack/AuditFeedbackService.js"></script>
+    <script src="/js/app/Services/AuditIssue/AuditIssueService.js"></script>
+    <script src="/js/app/Services/Audit/AuditService.js"></script>
+    <script src="/js/app/Controllers/Audit/AuditController.js"></script> *@
+
+
+   <script src="/js/app/Services/AuditPointsService.js"></script>
+    <script src="/js/app/Controllers/AuditPointsController.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            // AuditController.init();
+
+            AuditPointsController.init();
+
+        });
+
+    </script>
+    }
+

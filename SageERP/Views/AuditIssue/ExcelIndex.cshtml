@@ -1,0 +1,249 @@
+﻿@model Shampan.Models.AuditIssue
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.Partial("_Header",new HeaderModel(){ HeaderName = "High Level Report", BreadCrums = new Dictionary<string, string>()
+{
+    {"/Audit","Audit"},
+    {"","Index"},
+}})
+
+<link href="~/css/button.css" rel="stylesheet" />
+
+<style>
+    .visible-icon {
+        display: inline-block;
+    }
+
+    .hidden-icon {
+        display: none;
+    }
+
+    .blue-icon {
+        color: blue;
+    }
+
+    .pagination-left {
+        float: left;
+    }
+    .red-icon {
+        color: red;
+    }
+
+</style>
+
+
+<div class="container-fluid">
+   
+    <div class="card">
+
+        <div class="card-header p-2">
+            <h5>High Level Report</h5>
+        </div>
+
+        <div class="card-body p-2">
+
+            
+            <div class="form-group row">
+
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            @Html.LabelFor(model => model.Compliance, new { @class = "form-check-label", style = "margin-left: -18px; margin-top: 20px;font-weight: bold;"})
+
+                            @Html.CheckBoxFor(model => model.Compliance, new { @class = "form-check-input",  style = "margin-left: 25px;    margin-top: 25px; transform: scale(1.9);", id = "Compliance" })
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            @Html.LabelFor(model => model.Financial, new { @class = "form-check-label", style = "margin-left: -18px; margin-top: 20px;font-weight: bold;"})
+
+                            @Html.CheckBoxFor(model => model.Financial, new { @class = "form-check-input",  style = "margin-left: 25px;    margin-top: 25px; transform: scale(1.9);", id = "Financial" })
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            @Html.LabelFor(model => model.Operational, new { @class = "form-check-label", style = "margin-left: -18px; margin-top: 20px;font-weight: bold;"})
+
+                            @Html.CheckBoxFor(model => model.Operational, new { @class = "form-check-input",  style = "margin-left: 25px;    margin-top: 25px; transform: scale(1.9);", id = "Operational" })
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            @Html.LabelFor(model => model.InvestigationOrForensis, new { @class = "form-check-label", style = "margin-left: -18px; margin-top: 20px;font-weight: bold;"})
+
+                            @Html.CheckBoxFor(model => model.InvestigationOrForensis, new { @class = "form-check-input",  style = "margin-left: 25px;    margin-top: 28px; transform: scale(1.9);", id = "InvestigationOrForensis" })
+                        </label>
+                    </div>
+                </div>
+
+                             
+            </div>
+
+            <div class="form-group row">
+
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            @Html.LabelFor(model => model.StratigicMeeting, new { @class = "form-check-label", style = "margin-top: 20px;font-weight: bold;"})
+
+                            @Html.CheckBoxFor(model => model.StratigicMeeting, new { @class = "form-check-input",  style = "margin-left: 25px; margin-top: 28px; transform: scale(1.9);", id = "StratigicMeeting" })
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            @Html.LabelFor(model => model.ManagementReviewMeeting, new { @class = "form-check-label", style = "margin-top: 20px;font-weight: bold;"})
+
+                            @Html.CheckBoxFor(model => model.ManagementReviewMeeting, new { @class = "form-check-input",  style = "margin-left: 25px; margin-top: 28px; transform: scale(1.9);", id = "ManagementReviewMeeting" })
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-check">
+
+                        <label class="form-check-label">
+                            @Html.LabelFor(model => model.OtherMeeting, new { @class = "form-check-label", style = "margin-left: -18px; margin-top: 20px;font-weight: bold;"})
+                            @Html.CheckBoxFor(model => model.OtherMeeting, new { @class = "form-check-input",  style = "margin-left: 25px; margin-top: 28px; transform: scale(1.9);", id = "OtherMeeting" })
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            @Html.LabelFor(model => model.Training, new { @class = "form-check-label", style = "margin-top: 20px;font-weight: bold;"})
+
+                            @Html.CheckBoxFor(model => model.Training, new { @class = "form-check-input",  style = "margin-left: 25px; margin-top: 28px; transform: scale(1.9);", id = "Training" })
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+              
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.FromDate)
+                    <div class="input-group date">
+                        @Html.TextBoxFor(model => model.FromDate, new { @class = "  form-control form-control-sm dateRange" })
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.ToDate)
+                    <div class="input-group date">
+                        @Html.TextBoxFor(model => model.ToDate, new { @class = "  form-control form-control-sm dateRange" })
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3" style="margin-top: 28px;">
+                    <button type="button" id="download" class="buttonn excelButton" style="width:90px;">
+                        &nbsp;
+                        Report
+                    </button>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="container-fluid">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">
+                List Of Data
+            </h3>
+
+            @Html.HiddenFor(model => model.Edit)
+
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped" id="ExcelIndexList">
+
+                    <thead>
+                        <tr>
+
+                            <th class="private">ID</th>
+                            <th class="private">SL</th>
+                            <th>Audit Code</th>
+                            <th>Audit Name</th>                           
+                            <th>Issue Heading</th>
+                            <th>Issue Details</th>
+                            <th>Risk</th>
+                            <th>Feedback Details</th>
+                            <th>BranchFeedBack Details</th>
+                            <th>Audit Status</th>
+                            <th>Issue Priority</th>
+                            <th>Issue Status</th>
+                            <th>Date Of Submission</th>
+                            <th class="bool">InvestigationOrForensis</th>
+                            <th class="bool">Stratigic Meeting</th>
+                            <th class="bool">Management ReviewMeeting</th>
+                            <th class="bool">Other Meeting</th>
+                            <th class="bool">Training</th>
+                            <th class="bool">Operational</th>
+                            <th class="bool">Financial</th>
+                            <th class="bool">Compliance</th>
+                            
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+
+    <script src="/js/app/Services/AuditIssue/AuditIssueService.js"></script>
+    <script src="/js/app/Controllers/AuditIssue/AuditIssueController.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            AuditIssueController.init({ auditId: 0 });
+            
+        });
+
+    </script>
+}
