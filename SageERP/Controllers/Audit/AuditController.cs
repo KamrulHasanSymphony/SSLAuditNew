@@ -155,7 +155,7 @@ namespace SSLAudit.Controllers.Audit
 
         public async Task<IActionResult> Index(string edit, string? notification, int? id)
         {
-            //Index
+            //Index 
             Notifications notifi = new Notifications();
             List<UserManuInfo> manu = new List<UserManuInfo>();
             AuditMaster master = new AuditMaster();
