@@ -44,7 +44,7 @@ namespace Shampan.Services.Settings
                     String sqlText = " ";
                     sqlText = @"
     CREATE TABLE [dbo].[TestHeader](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Code] [nvarchar](50) NULL,
 	[GLAccount] [nvarchar](50) NULL,
 	[TransDate] [date] NULL,
@@ -79,7 +79,7 @@ namespace Shampan.Services.Settings
 
                     sqlText = @"
 CREATE TABLE [dbo].[TestDetails](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[TestHeaderId] [int] NULL,
 	[BankCode] [nvarchar](50) NULL,
 	[Amount] [decimal](18, 4) NULL,
