@@ -112,6 +112,7 @@ namespace SageERP.Controllers
         {
             try
             {
+                //Index 
                 var result = _settingsService.DbUpdate(model);               
                 return RedirectToAction("Index", "Home");
             }

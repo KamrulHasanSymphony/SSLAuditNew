@@ -1103,7 +1103,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKFinancePerformPreferenceSettings
 
-
                     #region BKFinancePreformPreferenceCBSTemp
 
                     sqlText = " ";
@@ -1152,9 +1151,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKFinancePreformPreferenceCBSTemp
 
-
-
-
                     #region BKFraudIrregularitiesInternalControlPreferenceCBSTemp
 
                     sqlText = " ";
@@ -1197,9 +1193,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion BKFraudIrregularitiesInternalControlPreferenceCBSTemp
-
-
-
 
                     #region BKFraudIrrgularitiesPreferenceSettings
 
@@ -1245,7 +1238,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKFraudIrrgularitiesPreferenceSettings
 
-
                     #region BKInternalControlWeakPreferenceSettings
 
                     sqlText = " ";
@@ -1290,11 +1282,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion BKInternalControlWeakPreferenceSettings
-
-
-
-
-
 
                     #region BKReguCompliancesPreferenceSettings
 
@@ -1344,7 +1331,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKReguCompliancesPreferenceSettings
 
-
                     #region BKRiskAssessPerferenceSettings
 
                     sqlText = " ";
@@ -1389,8 +1375,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion BKRiskAssessPerferenceSettings
-
-
 
                     #region BKRiskAssessRegulationPreferenceCBSTemp
 
@@ -1437,9 +1421,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion BKRiskAssessRegulationPreferenceCBSTemp
-
-
-
 
                     #region CommonSelectionSettings
 
@@ -1535,8 +1516,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion CommonSelectionSettings
-
-
 
                     #region CommonSelectionSettingsAuditPreferences
 
@@ -1636,9 +1615,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion CommonSelectionSettingsAuditPreferences
 
-
-
-
                     #region FinancePreformPreferenceSettings
 
                     sqlText = " ";
@@ -1685,8 +1661,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion FinancePreformPreferenceSettings
-
-
 
                     #region FinancePreformPreferenceSettingsAuditPreferences
 
@@ -1738,8 +1712,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion FinancePreformPreferenceSettingsAuditPreferences
 
-
-
                     #region FraudIrregularitiesPreferenceSettings
 
                     sqlText = " ";
@@ -1779,8 +1751,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion FraudIrregularitiesPreferenceSettings
-
-
 
                     #region FraudIrregularitiesPreferenceSettingsAuditPreferences
 
@@ -1825,9 +1795,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion FraudIrregularitiesPreferenceSettingsAuditPreferences
 
-
-
-
                     #region InternalControlWeakPreferenceSettings
 
                     sqlText = " ";
@@ -1866,8 +1833,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion InternalControlWeakPreferenceSettings
-
-
 
                     #region InternalControlWeakPreferenceSettingsAuditPreferences
 
@@ -1911,8 +1876,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion InternalControlWeakPreferenceSettingsAuditPreferences
 
-
-
                     #region ReguCompliancesPreferenceSettings
 
                     sqlText = " ";
@@ -1954,9 +1917,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion ReguCompliancesPreferenceSettings
-
-
-
 
                     #region ReguCompliancesPreferenceSettingsAuditPreferences
 
@@ -2003,9 +1963,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion ReguCompliancesPreferenceSettingsAuditPreferences
 
-
-
-
                     #region RiskAssessPreferenceSettings
 
                     sqlText = " ";
@@ -2044,9 +2001,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion RiskAssessPreferenceSettings
-
-
-
 
                     #region RiskAssessPreferenceSettingsAuditPreferences
 
@@ -2090,8 +2044,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion RiskAssessPreferenceSettingsAuditPreferences
 
-
-
                     #region A_AuditAreaPoints
 
                     sqlText = " ";
@@ -2119,7 +2071,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion A_AuditAreaPoints
-
 
                     #region FiscalYears
 
@@ -2157,9 +2108,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion FiscalYears
 
-
-
-
                     #region FiscalYearDetails
 
                     sqlText = " ";
@@ -2192,9 +2140,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion FiscalYearDetails
-
-
-
 
                     #region MonthlyData
 
@@ -2236,9 +2181,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion MonthlyData
-
-
-
 
                     #region PurchaseInvoices
 
@@ -2284,8 +2226,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion PurchaseInvoices
 
-
-
                     #region SalesInvoices
 
                     sqlText = " ";
@@ -2329,7 +2269,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion SalesInvoices
 
-
                     #region YearlyData
 
                     sqlText = " ";
@@ -2365,7 +2304,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion YearlyData
-
 
                     #region DashboardSettings
 
