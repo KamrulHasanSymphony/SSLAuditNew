@@ -23,6 +23,7 @@ namespace Shampan.Services.Settings
 
                 try
                 {
+
                     #region Settings
                     SettingsModel vm = new SettingsModel();
 
@@ -223,8 +224,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion AuditPoints
 
-
-
                     #region AuditApprover
 
                     sqlText = " ";
@@ -256,8 +255,6 @@ CREATE TABLE [dbo].[TestDetails](
                     context.Repositories.SettingsRepository.NewTableAdd("AuditApprover", sqlText);
 
                     #endregion AuditApprover
-
-
 
                     #region AuditComponent
 
@@ -328,8 +325,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion AuditComponent
 
-
-
                     #region AuditOfficesPreferenceInfo
 
                     sqlText = " ";
@@ -369,9 +364,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion AuditOfficesPreferenceInfo
-
-
-
 
                     #region AuditPreferenceEvalutions
 
@@ -420,8 +412,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion AuditPreferenceEvalutions
 
-
-
                     #region AuditTemplateDetails
 
                     sqlText = " ";
@@ -462,7 +452,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion AuditTemplateDetails
 
-
                     #region BKAuditCategories
 
                     sqlText = " ";
@@ -496,8 +485,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion BKAuditCategories
-
-
 
                     #region BKAuditCompliances
 
@@ -536,7 +523,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKAuditCompliances
 
-
                     #region BKAuditInfoDetails
 
                     sqlText = " ";
@@ -574,8 +560,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKAuditInfoDetails
 
-
-
                     #region BKAuditInfoMaster
 
                     sqlText = " ";
@@ -610,8 +594,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion BKAuditInfoMaster
-
-
 
                     #region BKAuditInfoMasterApproval
 
@@ -652,8 +634,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion BKAuditInfoMasterApproval
-
-
 
                     #region BKAuditOfficePreferenceCBSTemp
 
@@ -703,10 +683,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKAuditOfficePreferenceCBSTemp
 
-
-
-
-
                     #region BKAuditOfficesPreferenceInfo
 
                     sqlText = " ";
@@ -748,7 +724,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKAuditOfficesPreferenceInfo
 
-
                     #region BKAuditOfficeTypes
 
                     sqlText = " ";
@@ -783,8 +758,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion BKAuditOfficeTypes
-
-
 
                     #region BKAuditPreferenceEvaluations
 
@@ -835,8 +808,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKAuditPreferenceEvaluations
 
-
-
                     #region BKAuditTemlateMaster
 
                     sqlText = " ";
@@ -874,8 +845,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKAuditTemlateMaster
 
-
-
                     #region BKAuditTemplateDetails
 
                     sqlText = " ";
@@ -908,8 +877,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion BKAuditTemplateDetails
-
-
 
                     #region BKCheckListItems
 
@@ -950,10 +917,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKCheckListItems
 
-
-
-
-
                     #region BKCheckListSubTypes
 
                     sqlText = " ";
@@ -991,7 +954,6 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #endregion BKCheckListSubTypes
 
-
                     #region BKCheckListTypes
 
                     sqlText = " ";
@@ -1028,7 +990,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion BKCheckListTypes
-
 
                     #region BKCommonSelectionSettings
 
@@ -1091,9 +1052,6 @@ CREATE TABLE [dbo].[TestDetails](
 
 
                     #endregion BKCommonSelectionSettings
-
-
-
 
                     #region BKFinancePerformPreferenceSettings
 
@@ -2451,8 +2409,6 @@ CREATE TABLE [dbo].[TestDetails](
                     #endregion Table
 
 
-
-
                     #region  AddField
 
                     context.Repositories.SettingsRepository.DBTableFieldAdd("Notification", "UserId", "varchar(MAX)", true);
@@ -2482,9 +2438,6 @@ CREATE TABLE [dbo].[TestDetails](
                     context.Repositories.SettingsRepository.DBTableFieldAdd("TestDetails", "RawQuantity", "decimal(18, 2)", true);
 
                     #endregion
-
-
-
 
 
                     #region FieldAlter/Update
