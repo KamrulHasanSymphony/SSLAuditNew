@@ -785,6 +785,12 @@
     let addPaymentNumber = parseFloat(addPaymentValue);
     var addPaymentVal = Number(parseFloat(addPaymentNumber).toFixed(2)).toLocaleString('en', { minimumFractionDigits: 2 });
     $("#addPayment").text(addPaymentVal);
+    //
+    let addPaymentNegativeValue = $("#addPaymentNegative").text();
+    let addPaymentNegativeNumber = parseFloat(addPaymentNegativeValue);
+    var addPaymentNegativeVal = Number(parseFloat(addPaymentNegativeNumber).toFixed(2)).toLocaleString('en', { minimumFractionDigits: 2 });
+    $("#addPaymentNegative").text(addPaymentNegativeVal);
+    
     
     debugger;
 

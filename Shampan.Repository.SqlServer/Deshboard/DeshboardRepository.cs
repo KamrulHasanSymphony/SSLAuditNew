@@ -551,8 +551,29 @@ WHERE U.UserId IS NOT NULL";
     SELECT    
     FORMAT(COALESCE(SUM(0), 0), '0.00') AS PreviousAmount,
     FORMAT(COALESCE(count(Id), 0), '0.00') AS CorrectedAmount,
-    --FORMAT(COALESCE(SUM(AdditionalPayment), 0), '0.00') AS AdditionalPayment 
-    FORMAT(COALESCE(SUM(ABS(AdditionalPayment)), 0), '0.00') AS AdditionalPayment
+    --FORMAT(COALESCE(SUM(ABS(AdditionalPayment)), 0), '0.00') AS AdditionalPayment
+FORMAT(
+    COALESCE(
+        SUM(
+            CASE 
+                WHEN AdditionalPayment > 0 
+                THEN AdditionalPayment 
+                ELSE 0 
+            END
+        ), 
+    0), 
+'0.00') AS AdditionalPayment,
+
+FORMAT(
+        COALESCE(
+            SUM(CASE 
+                    WHEN AdditionalPayment < 0 
+                    THEN AdditionalPayment 
+                    ELSE 0 
+                END), 
+        0), 
+    '0.00') AS NegativeAdditionalPayment
+
     FROM 
     Financial WHERE 1=1
     ";

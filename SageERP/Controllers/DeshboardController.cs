@@ -203,17 +203,11 @@ namespace SSLAudit.Controllers
 
                 string?[] conditionalValue = new[] { code, advanceAmount, description, post };
 
-                ResultModel<List<PrePaymentMaster>> indexData =
-                    _deshboardService.PrePaymentGetIndexData(index, conditionalFields, conditionalValue);
+                ResultModel<List<PrePaymentMaster>> indexData = _deshboardService.PrePaymentGetIndexData(index, conditionalFields, conditionalValue);
 
-
-
-                ResultModel<int> indexDataCount =
-                _deshboardService.PrePaymentGetIndexDataCount(index, conditionalFields, conditionalValue);
-
+                ResultModel<int> indexDataCount = _deshboardService.PrePaymentGetIndexDataCount(index, conditionalFields, conditionalValue);
 
                 int result = _deshboardService.PrePaymentGetCount(TableName.Financial, "Id", new[] { "Financial.createdBy", }, new[] { userName });
-
 
                 return Ok(new { data = indexData.Data, draw, recordsTotal = result, recordsFiltered = indexDataCount.Data });
             }

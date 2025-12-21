@@ -23,6 +23,7 @@ namespace Shampan.Models
 		public decimal PreviousAmount { set; get; }
 		public decimal CorrectedAmount { set; get; }
 		public decimal AdditionalPayment { set; get; }
+		public decimal NegativeAdditionalPayment { set; get; }
 		public string PaymentMemoReferenceNo { set; get; }
 		public string Department { set; get; }
 		public string Remarks { set; get; }
