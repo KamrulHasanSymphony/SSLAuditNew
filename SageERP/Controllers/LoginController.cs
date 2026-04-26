@@ -49,7 +49,6 @@ namespace ShampanERP.Controllers
            ISettingsService settingsService,
             IDeshboardService deshboardService
 
-
             )
         {
             _userManager = userManager;
@@ -70,11 +69,8 @@ namespace ShampanERP.Controllers
            
             List<CompanyInfo> companyInfos = new List<CompanyInfo>();
             LoginResource loginModel = new LoginResource();
-
             var resultModel = _companyInfoService.GetAll(null, null);
-
-          
-
+         
             if (resultModel.Status == Status.Success)
             {
                 companyInfos = resultModel.Data;
@@ -84,22 +80,16 @@ namespace ShampanERP.Controllers
             loginModel.returnUrl = returnurl;
             AuthDbConfig.AuthDB = AuthDbName();
      
-
             return View(loginModel);
         }
 
         public async Task<IActionResult> CreateClaims()
         {
             string SageDbName = _dbConfig.SageDbName;
-
             string userName = "erp";
-
             var user = _userManager.Users.SingleOrDefault(x => x.UserName == userName);
-
             IdentityResult? result = await _userManager.AddClaimAsync(user, new Claim(ClaimNames.SageDatabase, SageDbName));
-
             return RedirectToAction("Index", "Home");
-
         }
 
 
@@ -120,10 +110,8 @@ namespace ShampanERP.Controllers
             List<CompanyInfo> companyInfos = new List<CompanyInfo>();
             var resultModel = _companyInfoService.GetAll(null, null);
             string[] retResults = new string[3];
-
-      
-
             CompanyInfo companyData = _companyInfoService.GetAll(null, null).Data.FirstOrDefault();
+
             if (!string.IsNullOrEmpty(companyData.IsAdCheck) && companyData.IsAdCheck == "Y")
             {
                 //retResults = _companyInfoService.CheckADAuth(model.UserName, null, null, null, companyData);
@@ -136,7 +124,6 @@ namespace ShampanERP.Controllers
 
             model.CompanyInfos = companyInfos;
 
-
             var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
 
             if (!result.Succeeded)
@@ -146,7 +133,6 @@ namespace ShampanERP.Controllers
             }
 
             var user = _userManager.Users.SingleOrDefault(x => x.UserName == model.UserName);
-
 
             if (user.IsArchive == true)
             {
@@ -218,7 +204,6 @@ namespace ShampanERP.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-
             else
             {
                 return Redirect(returnurl);
@@ -230,7 +215,6 @@ namespace ShampanERP.Controllers
         {
             try
             {
-
                 ResultModel<string> companyCode = _settingsService.GetSettingsValue(new[] { "SettingGroup", "SettingName" }, new[] { "Company", "Code" });
                 CommonChanges.CompanyCode = companyCode.Data.ToString();
 

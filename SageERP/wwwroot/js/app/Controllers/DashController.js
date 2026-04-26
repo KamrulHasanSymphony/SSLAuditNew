@@ -11,7 +11,6 @@
 
         getEvents();
 
-
         $("#tBranchProfiles").on("dblclick", "td",
             function () {
                 debugger;
@@ -41,10 +40,6 @@
                 form.remove();
 
             });
-
-
-
-
 
         const percentageCells = document.querySelectorAll("tbody tr td:nth-child(6)");
         percentageCells.forEach(cell => {
@@ -144,10 +139,7 @@
         $("#planDropdown").on("change", function () {
             var selectedValue = $(this).val();
             
-            console.log("Selected Plan: " + selectedValue);
-
-            
-
+            console.log("Selected Plan: " + selectedValue);          
 
             $.ajax({
                 url: '/Home/UpdateAuditComponents', // Replace with your actual controller and action
@@ -162,11 +154,7 @@
                 }
             });
 
-
-
-
         });
-
 
 
         //BarChart - 1
@@ -180,27 +168,24 @@
         var totalRisks = $("#TotalRisk").val();
 
         
-
         const barData = {
          
-            labels: ['Total Audit', 'Audit Open', /*'Team Assign',*/ 'Issues Created on Audit', 'Total Issues', 'Total Risks'],
+            labels: ['Total Audit', 'Audit Open', 'Issues Created on Audit', 'Total Issues', 'Total Risks'],
 
             datasets: [
                 {
                     label: 'Audit Data',
-                    data: [totalAudit, auditOpen, /*teamAssign,*/ issuesCreateOnAudit, totalIssues, totalRisks],
+                    data: [totalAudit, auditOpen, issuesCreateOnAudit, totalIssues, totalRisks],
                     backgroundColor: [
                         '#FF5733',  
-                        '#33FF57',  
-                        //'#3357FF',  
+                        '#33FF57',                            
                         '#FF33A1', 
                         '#33A1FF',  
                         '#A133FF'   
                     ],
                     borderColor: [
                         '#FF5733',  
-                        '#33FF57', 
-                        //'#3357FF',  
+                        '#33FF57',                        
                         '#FF33A1',  
                         '#33A1FF',  
                         '#A133FF'   
@@ -368,27 +353,24 @@
 
 
         //issueBarChart - 5
-
-        //var totalDeadLine = 50;
+       
         var issueBeforeDeadLine = $("#BeforeDeadLineIssue").val();
         var issueDeadlineLapsed = $("#MissDeadLineIssues").val();
 
         const issuebarData = {
 
-            labels: [/*'Total DeadLine',*/ 'Issue BeforeDeadLine', 'Issue DeadlineLapsed'],
+            labels: ['Issue BeforeDeadLine', 'Issue DeadlineLapsed'],
 
             datasets: [
                 {
                     label: 'Issue Data',
-                    data: [/*totalDeadLine,*/ issueBeforeDeadLine, issueDeadlineLapsed],
-                    backgroundColor: [
-                        //'#FF5733',  
+                    data: [ issueBeforeDeadLine, issueDeadlineLapsed],
+                    backgroundColor: [  
                         '#33FF57',  
                         '#3357FF',  
 
                     ],
                     borderColor: [
-                        //'#FF5733',  
                         '#33FF57',  
                         '#3357FF',  
 
@@ -425,29 +407,7 @@
             options: issueBarOptions
         });
 
-
-
-
-        //AuditIssue Reporting Category - 6
-
-
-        //var categorylist = [];
-        //var totalCountArrayData = [];
-        //$.ajax({
-        //    url: '/Deshboard/GetIssueCategoryData',
-        //})
-        //    .done((result) => {
-        //        debugger;
-        //        categorylist = result;
-
-        //        result.forEach(item => {
-        //            totalCountArray.push(item.totalCount);
-        //        });
-        //    })
-        //    .fail(() => {
-        //        console.error("AJAX request failed.");
-        //    });
-
+       
         var Investigation = 45;
         var StrategicMeeting = 56;
         var ManagementReviewMeeting = 20;
@@ -565,77 +525,7 @@
             }
         }, 100); 
 
-
-
-        //var categorylist = [];
-        //var totalCountArray = [];
-        //$.ajax({
-        //    url: '/Deshboard/GetIssueCategoryData',
-        //})
-        //    .done((result) => {
-        //        debugger;
-        //        categorylist = result;
-
-        //        result.forEach(item => {
-        //            totalCountArray.push(item.totalCount);
-        //        });
-        //    })
-        //    .fail();
-
-
-        //debugger
-
-
-        //var Compliance = 45;
-        //var Financial = 56;
-        //var Operational = 20;
-
-        //var arr = [];
-        //arr[0] = 34;
-        //arr[1] = 56;
-        //arr[2] = 20;
-
-
-        //const issueProcessData = {
-        //    labels: ['Compliance', 'Financial', 'Operational'],
-        //    datasets: [
-        //        {
-        //            data: [arr[0], arr[1], totalCountArray[7]],
-        //            backgroundColor: ['#9BCF53', '#FFA500', '#32CD32'],
-        //            borderColor: ['#9BCF53', '#FFA500', '#32CD32'],
-        //            borderWidth: 1
-        //        }
-        //    ]
-        //};
-
-        //const issueProcessOptions = {
-        //    responsive: true,
-        //    maintainAspectRatio: false,
-        //    plugins: {
-        //        legend: {
-        //            position: 'bottom'
-        //        },
-        //        tooltip: {
-        //            callbacks: {
-        //                label: function (tooltipItem) {
-        //                    let value = meetingData.datasets[0].data[tooltipItem.dataIndex];
-        //                    return ` ${meetingData.labels[tooltipItem.dataIndex]}: ${value}`;
-        //                }
-        //            }
-        //        }
-        //    }
-        //};
-
-        //new Chart(document.getElementById('issueProcessPieChart'), {
-        //    type: 'pie',
-        //    data: issueProcessData,
-        //    options: issueProcessOptions
-        //});
-
-
-
-
-        //last
+        //===  Last ====
         debugger;
         var branchList = {};
         var labels = [];
@@ -693,82 +583,9 @@
             .fail((jqXHR, textStatus, errorThrown) => {
                 console.error("AJAX Error:", textStatus, errorThrown);
             });
-
-
-
-
-
-
-        //var branchList = {};
-        //var labels = [];
-        //var auditData = [];
-        //var issueData = [];
-
-        //$.ajax({
-        //    url: '/Deshboard/GetTotalBranchWithAuditCount', 
-        //    method: 'GET',
-        //    dataType: 'json'
-        //})
-        //    .done((result) => {
-        //        debugger;
-        //        branchList = result;
-        //        var labelsdata = [`${result[0].branchName}`];
-        //        labels = result.map(branch => branch.branchName);  
-        //        auditData = result.map(branch => branch.totalAudits); 
-        //        issueData = result.map(branch => branch.totalIssues); 
-        //    })
-        //    .fail((jqXHR, textStatus, errorThrown) => {
-        //        console.error("AJAX Error:", textStatus, errorThrown);
-        //    });
-
-
-
-        //const ctx = document.getElementById('auditChart').getContext('2d');
-
-        //new Chart(ctx, {
-        //    type: 'bar',
-
-        //    data: {
-        //        labels:
-        //            [labels[0]
-        //        ],
-        //        datasets: [
-        //            {
-        //                label: 'Total Audit',
-        //                data: [auditData[0]],
-        //                backgroundColor: 'blue'
-        //            },
-        //            {
-        //                label: 'Total Issues',
-        //                data: [issueData[0]],
-        //                backgroundColor: 'red'
-        //            }
-        //        ]
-        //    },
-
-
-        //    options: {
-        //        responsive: true,
-        //        plugins: {
-        //            legend: {
-        //                display: true
-        //            }
-        //        },
-        //        scales: {
-        //            x: { stacked: true }, 
-        //            y: { stacked: true } 
-        //        }
-        //    }
-        //});
-
-
-
-
     }
-
-    
-    //End Init
-
+  
+    //========== End Init =========
 
     debugger;
     let value = $("#preValue").text();       
@@ -807,7 +624,6 @@
         })
             .done(function (result) {
 
-
                 var data = new google.visualization.DataTable();
                 data.addColumn('string', 'Entity');
                 data.addColumn('string', 'ParentEntity');
@@ -821,21 +637,15 @@
                     var row =
                         [
                             [
-
                                 {
                                     v: employeeId,
                                     f: employeeName + '<div>(<span>' + designation + '</span>)</div><img src = "/Images/' + employeeId + '.jpg" />'
                                 }, reportingManager, designation
                             ]
-
                         ]
-
-
-
 
                     data.addRows(row);
                 }
-
                 var chart = new google.visualization.OrgChart($("#chart")[0]);
                 chart.draw(data, { allowHtml: true });
             })
@@ -856,13 +666,10 @@
             .done(function (data) {
 
                 GenerateCalender(data);
-
-
             })
             .fail(function (fail) {
                 alert('failed');
             });
-
     }
 
 
@@ -887,7 +694,6 @@
         })
 
     }
-
 
     $(document).ready(function () {
         $("#datepicker").datepicker({
@@ -915,8 +721,6 @@
             }
         });
     });
-
-
 
     return {
         init: init

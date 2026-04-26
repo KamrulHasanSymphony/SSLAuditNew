@@ -28,9 +28,7 @@
 
     var DashboardSetting = ViewData["DashboardSetting"] as DeshboardSettings; 
     int endval = 0;
-     var baseUrl =  ViewBag.BaseUrl;
-    // var fullUrl = $"{baseUrl}/Audit?edit=Audit";
-
+     var baseUrl =  ViewBag.BaseUrl;    
 }
 
 @{
@@ -233,8 +231,7 @@
                                            @foreach (var item in components.ToList())
                                            {
                                                             <tbody>
-                                                                <tr>
-                                                                 @*<th style="width: 16.67%;">@item.Name</th> *@
+                                                                <tr>                                                               
                                                                     <th style="width:16.67%;">
 
                                                                             <a href="@($"/Audit?edit={item.Name.Split(' ')[0]}")"

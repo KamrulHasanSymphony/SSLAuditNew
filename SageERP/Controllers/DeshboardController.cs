@@ -41,9 +41,6 @@ namespace SSLAudit.Controllers
             PrePaymentMaster vm = new PrePaymentMaster();
             vm.AdditionalPayment = sum;
 
-            //string formatted = Convert.ToInt32(premaymentReview.Value).ToString("N0");
-            //premaymentReview.Value = formatted;
-
             if (premaymentReview != null)
             {
                 vm.PrepaymentReview = premaymentReview;
