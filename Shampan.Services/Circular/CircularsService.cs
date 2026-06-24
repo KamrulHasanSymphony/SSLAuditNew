@@ -288,7 +288,6 @@ namespace Shampan.Services.Circular
 					savedPaths = _fileService.UploadFiles(model.Attachments, saveDirectory, allowedExtensions, maxSizeInBytes).Result;
 
 
-
 					Circulars master = context.Repositories.CircularsRepository.Update(model);
 
 					foreach (string savedPath in savedPaths)

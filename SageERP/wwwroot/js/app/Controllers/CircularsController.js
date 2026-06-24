@@ -1,15 +1,10 @@
 ﻿var CircularsController = function (CommonService, CircularsService) {
 
 
-
     var init = function () {
-
-
 
         var indexTable = CircularsTable();
         var indexTableDeshboard = CircularsTableForDeshboard();
-
-
 
         $(".btnsave").click(function () {
             save();
@@ -18,15 +13,12 @@
         if ($("#CircularType").length) {
             LoadCombo("CircularType", '/Common/GetCircularType');
         }
-
-
-        
+    
 
     }
 
-    /*init end*/
+    //================ init end =============
     
-
     function save() {
 
         debugger;
@@ -38,21 +30,14 @@
             return;
         }
 
-
         //var circulars = serializeInputs("frm_Circulars");
         var form = $("#frm_Circulars")[0];
         var circulars = new FormData(form);
 
         var IsPublished = $("#IsPublished").is(":checked");
-        circulars.IsPublished = IsPublished;
-
-
-
-        
+        circulars.IsPublished = IsPublished;  
 
         CircularsService.save(circulars, saveDone, saveFail);
-
-
 
     }
 
@@ -71,8 +56,6 @@
             list.append(item);
         });
     }
-
-
 
     function saveDone(result) {
         debugger
@@ -102,6 +85,7 @@
 
 
             } else {
+                debugger;
 
                 addListItem(result);
 
@@ -115,21 +99,20 @@
             }
         }
         else if (result.status == "400") {
+            debugger;
             ShowNotification(3, result.message || result.error); 
         }
         else if (result.status == "199") {
+            debugger;
             ShowNotification(3, result.message || result.error); 
         }
     }
 
-
     function saveFail(result) {
+        debugger;
         console.log(result);
-        ShowNotification(3, "Something gone wrong");
+        ShowNotification(3, result.message);
     }
-
-
-
 
 
     var CircularsTable = function () {
@@ -215,15 +198,10 @@
 
                         return "<a href=/Circulars/Edit/" + data + " class='edit' ><i class='editIcon' data-toggle='tooltip' title='' data-original-title='Edit'></i></a>" 
 
-                            //"<input onclick='CheckAll(this)' class='dSelected' type='checkbox' data-Id=" + data + " >"
-
-                            //"<a href='/TeamMembers/Index/" + data + "' class='edit' title='Member'><i class='fas fa-building''></i></a>"
-
                             ;
                    
-
                     },
-                    "width": "9%",
+                    "width": "4%",
                     "orderable": false
                 },                           
                 {
@@ -251,9 +229,6 @@
                 }
                 
                 
-                
-                
-
             ]
 
         });
@@ -305,9 +280,6 @@
         return dataTable;
 
     }
-
-
-
 
     
     var CircularsTableForDeshboard = function () {

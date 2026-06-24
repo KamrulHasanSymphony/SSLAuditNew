@@ -198,8 +198,9 @@ namespace SSLAudit.Controllers
 				var orderDir = Request.Form["order[0][dir]"].FirstOrDefault();
 				index.SearchValue = Request.Form["search[value]"].FirstOrDefault();
 				index.OrderName = "Id";
-				index.orderDir = orderDir;
-				index.startRec = Convert.ToInt32(startRec);
+				//index.orderDir = orderDir;
+				index.orderDir = "desc";
+                index.startRec = Convert.ToInt32(startRec);
 				index.pageSize = Convert.ToInt32(pageSize);
 
 
