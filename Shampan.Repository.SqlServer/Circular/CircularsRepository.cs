@@ -72,11 +72,11 @@ namespace Shampan.Repository.SqlServer.Tour
 ,Code
 ,CircularSummary
 ,CircularType
+,ISNULL(CircularNumber,0) CircularNumber
 ,CircularDate
 ,Attachment
 ,IsPublished
 ,CircularDetails
-
 
 ,CreatedBy
 ,CreatedOn
@@ -92,7 +92,6 @@ where 1=1";
 
                 sqlText = ApplyConditions(sqlText, conditionalFields, conditionalValue);
 
-
                 SqlCommand objComm = CreateCommand(sqlText);
 
                 objComm = ApplyParameters(objComm, conditionalFields, conditionalValue);
@@ -103,7 +102,6 @@ where 1=1";
 
                 List<Circulars> vms = dtResult.ToList<Circulars>();
                 return vms;
-
 
             }
             catch (Exception ex)
@@ -128,16 +126,13 @@ where 1=1";
 
                 sqlText = ApplyConditions(sqlText, conditionalFields, conditionalValue);
 
-
                 SqlDataAdapter objComm = CreateAdapter(sqlText);
 
                 objComm.SelectCommand = ApplyParameters(objComm.SelectCommand, conditionalFields, conditionalValue);
 
                 objComm.Fill(dt);
 
-
                 return Convert.ToInt32(dt.Rows[0][0]);
-
 
             }
             catch (Exception e)
@@ -158,6 +153,7 @@ where 1=1";
                 sqlText = @"select 
                   Circulars.Id
                  ,Circulars.Code
+                 ,ISNULL(Circulars.CircularNumber,0) CircularNumber
                  ,Circulars.CircularDate
                  ,Circulars.CircularDetails
                  --,Circulars.CircularType
@@ -255,6 +251,7 @@ where 1=1";
  Code
 ,CircularSummary
 ,CircularType
+,CircularNumber
 ,CircularDate
 ,Attachment
 ,IsPublished
@@ -272,11 +269,11 @@ where 1=1";
  @Code
 ,@CircularSummary
 ,@CircularType
+,@CircularNumber
 ,@CircularDate
 ,@Attachment
 ,@IsPublished
 ,@CircularDetails
-
 
 ,@CreatedBy
 ,@CreatedOn
@@ -287,23 +284,11 @@ where 1=1";
 
 
 
-				//foreach (AttachmentModel item in model.AttachmentDetailsModel)
-				//{
-				
-
-				//	cmdDetails.Parameters.AddWithValue("@InvoiceId", model.Id);
-				//	cmdDetails.Parameters.AddWithValue("@InvoiceNo", model.InvoiceNo);
-				//	cmdDetails.Parameters.AddWithValue("@FileName", model.Id + "_" + item.FileName ?? Convert.DBNull);
-				//	cmdDetails.ExecuteNonQuery();
-				//}
-
-
-
-
 				command.Parameters.Add("@Code", SqlDbType.NChar).Value = model.Code;
                 command.Parameters.Add("@CircularSummary", SqlDbType.NChar).Value = string.IsNullOrEmpty(model.CircularSummary) ? (object)DBNull.Value : model.CircularSummary;       
                 command.Parameters.Add("@CircularDetails", SqlDbType.NChar).Value = string.IsNullOrEmpty(model.CircularDetails) ? (object)DBNull.Value : model.CircularDetails;       
 				command.Parameters.Add("@CircularType", SqlDbType.Int).Value = model.CircularType;
+				command.Parameters.Add("@CircularNumber", SqlDbType.Int).Value = model.CircularNumber;
 				command.Parameters.Add("@CircularDate", SqlDbType.DateTime).Value = model.CircularDate;
                 command.Parameters.Add("@Attachment", SqlDbType.NChar).Value = string.IsNullOrEmpty(model.Attachment) ? (object)DBNull.Value : model.Attachment;
                 command.Parameters.Add("@IsPublished", SqlDbType.Bit).Value = model.IsPublished;
@@ -312,11 +297,7 @@ where 1=1";
 				command.Parameters.Add("@CreatedOn", SqlDbType.NChar).Value = string.IsNullOrEmpty(model.Audit.CreatedOn.ToString()) ? (object)DBNull.Value : model.Audit.CreatedOn.ToString();
 				command.Parameters.Add("@CreatedFrom", SqlDbType.NChar).Value = string.IsNullOrEmpty(model.Audit.CreatedFrom.ToString()) ? (object)DBNull.Value : model.Audit.CreatedFrom.ToString();
 
-	
-
-
 				model.Id = Convert.ToInt32(command.ExecuteScalar());
-
 
 				return model;
 
@@ -341,10 +322,11 @@ where 1=1";
  Code               =@Code  
 ,CircularSummary    =@CircularSummary
 ,CircularType       =@CircularType
+,CircularNumber     =@CircularNumber
 ,CircularDate       =@CircularDate
 ,Attachment         =@Attachment
 ,IsPublished        =@IsPublished
-,CircularDetails        =@CircularDetails
+,CircularDetails    =@CircularDetails
   
 
 ,LastUpdateBy              =@LastUpdateBy  
@@ -358,29 +340,17 @@ where  Id= @Id ";
 
 				command.Parameters.Add("@Id", SqlDbType.Int).Value = model.Id;
 				command.Parameters.Add("@Code", SqlDbType.NChar).Value = model.Code;
-
                 command.Parameters.Add("@CircularSummary", SqlDbType.NChar).Value = string.IsNullOrEmpty(model.CircularSummary) ? (object)DBNull.Value : model.CircularSummary;
                 command.Parameters.Add("@CircularDetails", SqlDbType.NChar).Value = string.IsNullOrEmpty(model.CircularDetails) ? (object)DBNull.Value : model.CircularDetails;
-
-
-                //command.Parameters.Add("@CircularSummary", SqlDbType.NChar).Value = model.CircularSummary;
-
                 command.Parameters.Add("@CircularType", SqlDbType.Int).Value = model.CircularType;
+                command.Parameters.Add("@CircularNumber", SqlDbType.Int).Value = model.CircularNumber;
                 command.Parameters.Add("@CircularDate", SqlDbType.DateTime).Value = model.CircularDate;
-
-                //command.Parameters.Add("@Attachment", SqlDbType.NChar).Value = model.Attachment;
-
                 command.Parameters.Add("@Attachment", SqlDbType.NChar).Value = string.IsNullOrEmpty(model.Attachment) ? (object)DBNull.Value : model.Attachment;
-
-
                 command.Parameters.Add("@IsPublished", SqlDbType.Bit).Value = model.IsPublished;
-
-
 
                 command.Parameters.Add("@LastUpdateBy", SqlDbType.NChar).Value = string.IsNullOrEmpty(model.Audit.LastUpdateBy.ToString()) ? (object)DBNull.Value : model.Audit.LastUpdateBy.ToString();
 				command.Parameters.Add("@LastUpdateOn", SqlDbType.NChar).Value = string.IsNullOrEmpty(model.Audit.LastUpdateOn.ToString()) ? (object)DBNull.Value : model.Audit.LastUpdateOn.ToString();
 				command.Parameters.Add("@LastUpdateFrom ", SqlDbType.NChar).Value = string.IsNullOrEmpty(model.Audit.LastUpdateFrom.ToString()) ? (object)DBNull.Value : model.Audit.LastUpdateFrom.ToString();
-
 
 				int rowcount = command.ExecuteNonQuery();
 

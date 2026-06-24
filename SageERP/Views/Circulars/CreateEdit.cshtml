@@ -37,6 +37,12 @@
 					</div>
 
 					<div class="col-sm-2">
+						@Html.LabelFor(model => model.CircularNumber)
+						@Html.TextBoxFor(Model =>Model.CircularNumber , new { @class = "  form-control form-control-sm" })
+						@Html.ValidationMessageFor(model => model.CircularNumber)
+					</div>
+
+					<div class="col-sm-2">
 						@Html.LabelFor(model => model.CircularType)
 						@Html.DropDownListFor(model => model.CircularType, Enumerable.Empty<SelectListItem>(), new {@class = "form-control", @data_selected = Model.CircularType})
 						@Html.ValidationMessageFor(model => model.CircularType)
@@ -53,11 +59,10 @@
 						</div>
 					</div>
 
-					<div class="col-sm-4">
+					<div class="col-sm-2">
 						@Html.LabelFor(model => model.CircularSummary)
 						@Html.TextAreaFor(Model =>Model.CircularSummary , new { @class = "  form-control form-control-sm" })
 						@Html.ValidationMessageFor(model => model.CircularSummary)
-
 					</div>
 
 					<div class="col-sm-1">

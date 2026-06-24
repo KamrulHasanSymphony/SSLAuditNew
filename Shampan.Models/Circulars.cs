@@ -30,6 +30,7 @@ namespace Shampan.Models
 		public bool IsPublished { set; get; }  
         public string FilesToBeUploaded { get; set; }
         public string Edit { get; set; }
+        public int CircularNumber { get; set; }
 
 		public Audit Audit;
 		public List<CircularAttachments> AttachmentsList { get; set; }

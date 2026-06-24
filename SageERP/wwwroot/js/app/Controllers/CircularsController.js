@@ -175,14 +175,12 @@
 
                             "code": $("#md-Code").val(),
                             "circulartype": $("#md-CircularType").val(),
+                            "circularnumber": $("#md-CircularNumber").val(),
                             "circulardate": $("#md-CircularDate").val(),
                             "circulardetails": $("#md-CircularDetails").val(),
-
-
                             "description": $("#md-Description").val(),
                             "ispost": $("#md-Post").val(),
-                            "ponumber": $("#md-PONumber").val(),
-                            //"ispost": $("#md-Post").val(),
+                            "ponumber": $("#md-PONumber").val(),                           
                             "ispush": $("#md-Push").val(),
                             "fromDate": $("#FromDate").val(),
                             "toDate": $("#ToDate").val()
@@ -207,28 +205,25 @@
                 {
                     data: "code",
                     name: "Code"
-
-                }
-                ,
+                },
+                {
+                    data: "circularNumber",
+                    name: "CircularNumber"
+                },
                 {
                     data: "name",
                     name: "Name"
-
                 }
-                ,
-                
+                ,              
                 {
                     data: "circularDate",
                     name: "CircularDate"
-
                 },
                 {
                     data: "circularDetails",
                     name: "CircularDetails"
-
                 }
-                
-                
+                               
             ]
 
         });

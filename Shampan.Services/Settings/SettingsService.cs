@@ -2349,6 +2349,8 @@ CREATE TABLE [dbo].[TestDetails](
 
                     #region  AddField
 
+                    context.Repositories.SettingsRepository.DBTableFieldAdd("Circulars", "CircularNumber", "int", true);
+
                     context.Repositories.SettingsRepository.DBTableFieldAdd("Notification", "UserId", "varchar(MAX)", true);
 
                     context.Repositories.SettingsRepository.DBTableFieldAdd("Tours", "EmpName", "nvarchar(50)", true);

@@ -184,6 +184,7 @@ namespace SSLAudit.Controllers
 				string circulardetails = Request.Form["circulardetails"].ToString();
 				string description = Request.Form["description"].ToString();
 				string post = Request.Form["ispost"].ToString();
+				string circularnumber = Request.Form["circularnumber"].ToString();
 
 				if (post == "Select")
 				{
@@ -210,13 +211,14 @@ namespace SSLAudit.Controllers
 				string[] conditionalFields = new[]
 				{
 							"Code like",
+							"CircularNumber like",
 							"CircularType.Name like",
 							"CircularDate like",
 							"CircularDetails like"
 
 				};
 
-				string?[] conditionalValue = new[] { code, circulartype, circulardate, circulardetails };
+				string?[] conditionalValue = new[] { code,circularnumber, circulartype, circulardate, circulardetails };
 
 				ResultModel<List<Circulars>> indexData =
 					_circularsService.GetIndexData(index, conditionalFields, conditionalValue);
