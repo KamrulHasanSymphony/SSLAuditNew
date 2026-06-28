@@ -607,7 +607,16 @@
                                                 <tr>
 
                                                     <th class="private">SL</th>
-                                                    <th class="private">Action</th>
+                                                    @* <th class="private">Action</th> *@
+
+                                                     <th class="private">
+                                                         @if (Model.Edit.Equals("issueApprove"))
+                                                         {
+                                                             <input type="checkbox" class="chkAll" style="width: 100px;"/>
+                                                         }                                                       
+                                                      Action
+                                                    </th>
+
                                                     <th>Issue Name</th>
                                                     <th>Issue Priority</th>
                                                     <th>Date Of Submission</th>
