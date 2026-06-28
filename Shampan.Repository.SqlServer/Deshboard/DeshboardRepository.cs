@@ -732,6 +732,7 @@ LEFT OUTER JOIN A_Audits A ON t.AuditId = A.Id
 WHERE t.rn = 1 
   AND A.StartDate >= @BeginingYear 
   AND A.StartDate <= @EndYear
+  AND A.AuditStatus != 'Completed' 
   AND t.CreatedOn >= t.DeadLineDate  
 
 
