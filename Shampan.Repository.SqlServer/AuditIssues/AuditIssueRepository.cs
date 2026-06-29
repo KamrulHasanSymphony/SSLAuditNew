@@ -481,6 +481,7 @@ LEFT OUTER JOIN A_AuditIssues AI ON t.AuditIssueId = AI.Id
 WHERE t.rn = 1 
   AND A.StartDate >= @BeginingYear
   AND A.StartDate <= @EndYear
+  AND A.AuditStatus != 'Completed'
   AND t.CreatedOn >= t.DeadLineDate 
 
                     "
@@ -960,6 +961,7 @@ LEFT OUTER JOIN Enums E on E.Id = AI.IssuePriority
 WHERE t.rn = 1 
 AND A.StartDate >= @BeginingYear 
 AND A.StartDate <= @EndYear
+AND A.AuditStatus != 'Completed'
 AND t.CreatedOn >= t.DeadLineDate  
      
        ";
